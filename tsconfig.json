@@ -16,6 +16,5 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true
 	},
-	"include": ["pages/*", "components/*", "lib/*"],
-	"exclude": ["tests/*"]
+	"include": ["pages/*", "components/*", "lib/*"]
 }

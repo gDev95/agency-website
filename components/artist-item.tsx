@@ -22,7 +22,6 @@ const StyledProfileImage = styled("div")<IProfileImage>`
 	border: 1px solid #333;
 	background-image: url("${props => props.profileImage}");
 	cursor: pointer;
-		
 `;
 
 const StyledArtistName = styled.span`

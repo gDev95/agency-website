@@ -2,7 +2,6 @@ import Grid from "@material-ui/core/Grid";
 import gql from "graphql-tag";
 import ArtistItem from "./artist-item";
 import { useQuery } from "@apollo/react-hooks";
-import Link from "next/link";
 
 export const ALL_ARTISTS_QUERY = gql`
 	query Artists {
