@@ -7,6 +7,7 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "isomorphic-unfetch";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
+
 interface Props {
 	apolloClient: ApolloClient<NormalizedCacheObject> | null;
 	apolloState: any;
