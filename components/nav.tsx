@@ -15,6 +15,8 @@ const StyledNav = styled.nav`
 
 const StyledIconMenuWrapper = styled.div`
 	transition: all 0.3s linear;
+	display: flex;
+	align-items: center;
 `;
 
 const Nav = () => {
