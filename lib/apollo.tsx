@@ -8,7 +8,7 @@ import fetch from "isomorphic-unfetch";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
 
-type Props {
+interface Props {
 	apolloClient: ApolloClient<NormalizedCacheObject> | null;
 	apolloState: any;
 }
@@ -74,7 +74,7 @@ export function withApollo(PageComponent: any, { ssr = true } = {}) {
 							<AppTree
 								pageProps={{
 									...pageProps,
-									apolloClient
+									apolloClient,
 								}}
 							/>
 						);
@@ -96,7 +96,7 @@ export function withApollo(PageComponent: any, { ssr = true } = {}) {
 
 			return {
 				...pageProps,
-				apolloState
+				apolloState,
 			};
 		};
 	}
@@ -135,8 +135,8 @@ function createApolloClient(initialState = {}) {
 		link: new HttpLink({
 			uri: "https://agency-grapqhl-api.herokuapp.com/graphql", // Server URL (must be absolute)
 			credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
-			fetch
+			fetch,
 		}),
-		cache: new InMemoryCache().restore(initialState)
+		cache: new InMemoryCache().restore(initialState),
 	});
 }

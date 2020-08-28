@@ -9,7 +9,7 @@ const StyledArtistListItem = styled.li`
 	list-style-type: none;
 `;
 
-type IProfileImage {
+interface IProfileImage {
 	profileImage: string;
 }
 const StyledProfileImage = styled("div")<IProfileImage>`
@@ -20,7 +20,7 @@ const StyledProfileImage = styled("div")<IProfileImage>`
 	width: 150px;
 	border-radius: 50%;
 	border: 1px solid #333;
-	background-image: url("${props => props.profileImage}");
+	background-image: url("${(props) => props.profileImage}");
 	cursor: pointer;
 `;
 
@@ -30,7 +30,7 @@ const StyledArtistName = styled.span`
 	cursor: pointer;
 `;
 
-type PropTypes {
+interface PropTypes {
 	id: string;
 	profileImageUrl: string;
 	name: string;

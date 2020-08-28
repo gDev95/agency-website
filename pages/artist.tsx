@@ -11,7 +11,7 @@ const StyledHeader = styled.h2`
 
 const StyledOuterContainer = styled.div``;
 
-type Props {
+interface Props {
 	id: string;
 }
 
