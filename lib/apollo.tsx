@@ -8,7 +8,7 @@ import fetch from "isomorphic-unfetch";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
 
-interface Props {
+type Props {
 	apolloClient: ApolloClient<NormalizedCacheObject> | null;
 	apolloState: any;
 }

@@ -1,45 +1,30 @@
 import React from "react";
 import Head from "next/head";
 import Nav from "../components/nav";
+import styled from "styled-components";
+
+const WebsiteContainer = styled.div`
+	width: 85%;
+	margin: auto;
+`;
 
 const Home = () => (
-	<div>
+	<WebsiteContainer>
 		<Head>
 			<title>Home</title>
 			<link rel="icon" href="/favicon.ico" />
 			<link
-				href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap"
+				href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
 				rel="stylesheet"
 			/>
+			<link
+				href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+				rel="stylesheet"
+			></link>
 		</Head>
 
 		<Nav />
-
-		<div className="hero">
-			<h1 className="title">Welcome to Next.js!</h1>
-			<p className="description">
-				To get started, edit <code>pages/index.js</code> and save to reload.
-			</p>
-
-			<div className="row">
-				<a href="https://nextjs.org/docs" className="card">
-					<h3>Documentation &rarr;</h3>
-					<p>Learn more about Next.js in the documentation.</p>
-				</a>
-				<a href="https://nextjs.org/learn" className="card">
-					<h3>Next.js Learn &rarr;</h3>
-					<p>Learn about Next.js by following an interactive tutorial!</p>
-				</a>
-				<a
-					href="https://github.com/zeit/next.js/tree/master/examples"
-					className="card"
-				>
-					<h3>Examples &rarr;</h3>
-					<p>Find other example boilerplates on the Next.js GitHub.</p>
-				</a>
-			</div>
-		</div>
-	</div>
+	</WebsiteContainer>
 );
 
 export default Home;

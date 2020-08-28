@@ -9,7 +9,7 @@ const StyledArtistListItem = styled.li`
 	list-style-type: none;
 `;
 
-interface IProfileImage {
+type IProfileImage {
 	profileImage: string;
 }
 const StyledProfileImage = styled("div")<IProfileImage>`
@@ -30,7 +30,7 @@ const StyledArtistName = styled.span`
 	cursor: pointer;
 `;
 
-interface PropTypes {
+type PropTypes {
 	id: string;
 	profileImageUrl: string;
 	name: string;
