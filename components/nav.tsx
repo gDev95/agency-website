@@ -6,14 +6,14 @@ import CloseIcon from "@material-ui/icons/Close";
 import { useMediaQuery } from "react-responsive";
 
 const StyledNav = styled.nav`
-	color: #FFF;
+	color: #fff;
 	position: relative;
 	left: 32px;
 	right: 32px;
 	height: 60px;
 	display: flex;
 	margin: auto;
-	justify-content:space-between
+	justify-content: space-between;
 	align-items: center;
 `;
 const NavList = styled.ul`

@@ -9,8 +9,6 @@ const StyledHeader = styled.h2`
 	text-align: center;
 `;
 
-const StyledOuterContainer = styled.div``;
-
 interface Props {
 	id: string;
 }
