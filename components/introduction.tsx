@@ -3,6 +3,7 @@ import { Container } from "./shared-ui";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import { CSSTransitionGroup } from "react-transition-group";
+import { FormattedMessage } from "react-intl";
 
 // https://github.com/microsoft/TypeScript/issues/37597
 const SloganContainer = styled.div`
@@ -78,7 +79,7 @@ export const Introduction = () => {
 	return (
 		<CoverImageContainer
 			isMobileScreen={isMobileScreen}
-			backgroundImage="../homepage-cover.png"
+			backgroundImage="/homepage-cover.png"
 		>
 			<CSSTransitionGroup
 				transitionName="mount-fade-in"
@@ -89,10 +90,16 @@ export const Introduction = () => {
 			>
 				<SloganContainer>
 					<SloganWrapper>
-						<h2>No Borders Booking</h2>
+						<h2>
+							<FormattedMessage id="Home.CompanyName" />
+						</h2>
 						<StyledHorizontalLine isMobileScreen={isMobileScreen} />
-						<h1>OUR MISSION IS TO MAKE YOUR PARTY BETTER</h1>
-						<StyledButton>More Info</StyledButton>
+						<h1>
+							<FormattedMessage id="Home.Slogan" />
+						</h1>
+						<StyledButton>
+							<FormattedMessage id="Home.MoreInfo" />
+						</StyledButton>
 					</SloganWrapper>
 				</SloganContainer>
 			</CSSTransitionGroup>

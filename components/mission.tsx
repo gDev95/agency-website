@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "./shared-ui";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
+import { FormattedMessage } from "react-intl";
 
 const MissionStatement = styled.div`
 	flex-grow: 1;
@@ -45,33 +46,28 @@ export const Mission = () => {
 	return (
 		<StyledSection>
 			<MissionStatement>
-				<h3>Our Mission</h3>
+				<h3>
+					<FormattedMessage id="Home.Mission.Header" />
+				</h3>
 				<StyledHorizontalLine />
 				<p>
-					The world has reached a very critical point. We are seeing acts of
-					hate, violence, greed and environmental injustice all over the globe.
-					In order for our species to confront and survive this unprecedented
-					crisis, we will need to stand together and recover our true self.
+					<FormattedMessage id="Home.Mission.Details.Paragraph1" />
 				</p>
 				{isMobileScreen && (
 					<ImageContainer>
-						<StyledImage src="../enric-ceo.jpg" />
-						<Styled>Enrice - Founder of Nobo Bookings</Styled>
+						<StyledImage src="/enric-ceo.jpg" />
+						<Styled>
+							<FormattedMessage id="Home.Mission.FounderImage.Description" />
+						</Styled>
 					</ImageContainer>
 				)}
 				<p>
-					At NoBo Bookings we believe that music is the most powerful conductor
-					of love, a force that can trump hate and unite all people under an
-					umbrella of tolerance and appreciation. That is why we focus on
-					finding undiscovered talent and we shed light on them. We want to give
-					to all those young passionate artists the chance to share their vision
-					with the world. We want to be part of the process of unification and
-					share these ravishing vibes with all of you.
+					<FormattedMessage id="Home.Mission.Details.Paragraph2" />
 				</p>
 			</MissionStatement>
 			{!isMobileScreen && (
 				<ImageContainer>
-					<StyledImage src="../enric-ceo.jpg" />
+					<StyledImage src="/enric-ceo.jpg" />
 				</ImageContainer>
 			)}
 		</StyledSection>
