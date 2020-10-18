@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "./shared-ui";
+import { Container } from "../shared-ui";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import { CSSTransitionGroup } from "react-transition-group";

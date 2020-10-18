@@ -16,5 +16,11 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true
 	},
-	"include": ["pages/*", "components/*", "lib/*"]
+	"include": [, "components/home/mission.tsx", "components/home/videoSection.tsx"
+		"pages/*",
+		"components/*",
+		"lib/*",
+		"components/home/introduction.tsx",
+		"components/home/artistSection.tsx"
+	]
 }

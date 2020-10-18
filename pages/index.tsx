@@ -3,8 +3,8 @@ import Head from "next/head";
 import Nav from "../components/nav";
 import styled from "styled-components";
 import { IntlProvider } from "react-intl";
-import { useRouter } from "next/router";
-import { getTranslatedMessages, useLanguage } from "../helpers";
+import { useLanguage } from "../helpers";
+import { withApollo } from "../lib/apollo";
 
 import "../main.css";
 import { Home } from "./home";
@@ -15,9 +15,8 @@ const StyledNav = styled(Nav)`
 `;
 
 const App = () => {
-	const router = useRouter();
 	const { language, translations } = useLanguage();
-	console.log(language, translations);
+
 	return (
 		<IntlProvider messages={translations} locale={language} defaultLocale="en">
 			<div>
@@ -40,4 +39,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default withApollo(App);

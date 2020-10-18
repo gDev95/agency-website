@@ -35,10 +35,6 @@ export function withApollo(PageComponent: any, { ssr = true } = {}) {
 		const displayName =
 			PageComponent.displayName || PageComponent.name || "Component";
 
-		if (displayName === "App") {
-			console.warn("This withApollo HOC only works with PageComponents.");
-		}
-
 		WithApollo.displayName = `withApollo(${displayName})`;
 	}
 
@@ -135,6 +131,7 @@ function createApolloClient(initialState = {}) {
 		link: new HttpLink({
 			uri: "https://agency-grapqhl-api.herokuapp.com/graphql", // Server URL (must be absolute)
 			credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
+			headers: { authorization: "TOKEN" },
 			fetch,
 		}),
 		cache: new InMemoryCache().restore(initialState),

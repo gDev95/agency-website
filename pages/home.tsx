@@ -1,10 +1,10 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import { Mission } from "../components/mission";
-import { Introduction } from "../components/introduction";
-import { VideoSection } from "../components/videoSection";
+import { Mission } from "../components/home/mission";
+import { Introduction } from "../components/home/introduction";
+import { VideoSection } from "../components/home/videoSection";
 import styled from "styled-components";
-import { ArtistOverview } from "../components/artistSection";
+import { ArtistOverview } from "../components/home/artistSection";
 
 const StyledSection = styled.section`
 	display: flex;
