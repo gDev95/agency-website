@@ -16,7 +16,9 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true
 	},
-	"include": [, "components/home/mission.tsx", "components/home/videoSection.tsx"
+	"include": [ 
+    "components/home/mission.tsx", 
+    "components/home/videoSection.tsx",
 		"pages/*",
 		"components/*",
 		"lib/*",
