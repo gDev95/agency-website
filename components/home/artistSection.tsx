@@ -3,6 +3,8 @@ import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+import { ArtistsProfileImage, TArtist } from "../../shared";
+import { Typography } from "@material-ui/core";
 
 const StyledSection = styled.section`
   width: 80%;
@@ -38,22 +40,25 @@ const StyledSubheader = styled.h3`
 
 const StyledArtistContent = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 56px 0;
   align-items: center;
   flex-wrap: wrap;
 `;
-
+const StyledArtistName = styled.div`
+  margin-top: 8px;
+`;
 const ArtistContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 80%;
   margin: auto;
 `;
 
-export const ALL_ARTISTS_QUERY = gql`
+export const ALL_ACTIVE_ARTISTS_QUERY = gql`
   query Artists {
-    artists {
+    artists(isDraft: false) {
       id
       basicInformation {
         name
@@ -64,8 +69,7 @@ export const ALL_ARTISTS_QUERY = gql`
 `;
 
 export const ArtistOverview = () => {
-  const { data } = useQuery(ALL_ARTISTS_QUERY);
-  console.log("Data of artists", data);
+  const { data } = useQuery(ALL_ACTIVE_ARTISTS_QUERY);
   return (
     <StyledSection>
       <StyledHeaderWrapper>
@@ -80,12 +84,19 @@ export const ArtistOverview = () => {
       </StyledHeaderWrapper>
       <ArtistContainer>
         {data &&
-          data.artists.map((artist: any) => (
-            <StyledArtistContent>
-              <span>name: {artist.basicInformation.name}</span>
-              <img src={artist.basicInformation.profileImageUrl} />
-            </StyledArtistContent>
-          ))}
+          data.artists.map(
+            (artist: Omit<TArtist, "advancedInformation" | "socialMedia">) => (
+              <StyledArtistContent>
+                <ArtistsProfileImage
+                  src={artist.basicInformation.profileImageUrl}
+                  size="100"
+                />
+                <StyledArtistName>
+                  {artist.basicInformation.name}
+                </StyledArtistName>
+              </StyledArtistContent>
+            )
+          )}
       </ArtistContainer>
     </StyledSection>
   );

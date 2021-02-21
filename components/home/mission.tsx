@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
-import { Container, Title, useIsSmallScreen } from "../shared";
+import { Container, Title, useIsSmallScreen } from "../../shared";
 
 const MissionStatement = styled.div`
   flex-grow: 1;

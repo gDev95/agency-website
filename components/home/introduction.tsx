@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CSSTransitionGroup } from "react-transition-group";
 import { FormattedMessage } from "react-intl";
 
-import { Container, useIsSmallScreen } from "../shared";
+import { Container, useIsSmallScreen } from "../../shared";
 
 // https://github.com/microsoft/TypeScript/issues/37597
 const SloganContainer = styled.div`

@@ -2,7 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 
 import styled, { css } from "styled-components";
-import { useIsSmallScreen } from "../shared";
+import { useIsSmallScreen } from "../../shared";
 
 const StyledRoot = styled.div<{ isMobileScreen: boolean }>`
   display: flex;

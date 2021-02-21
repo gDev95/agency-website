@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
-import { useIsSmallScreen } from "./shared";
+import { useIsSmallScreen } from "../shared";
 
 const StyledNav = styled.nav`
   color: #fff;

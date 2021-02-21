@@ -78,7 +78,7 @@ export function withApollo(PageComponent: any, { ssr = true } = {}) {
 						// Prevent Apollo Client GraphQL errors from crashing SSR.
 						// Handle them in components via the data.error prop:
 						// https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
-						console.error("Error while running `getDataFromTree`", error);
+						console.log(JSON.stringify(error, null, 2));
 					}
 
 					// getDataFromTree does not call componentWillUnmount
@@ -129,7 +129,7 @@ function createApolloClient(initialState = {}) {
 	return new ApolloClient({
 		ssrMode: typeof window === "undefined", // Disables forceFetch on the server (so queries are only run once)
 		link: new HttpLink({
-			uri: "https://agency-grapqhl-api.herokuapp.com/graphql", // Server URL (must be absolute)
+			uri: process.env.DEVELOPMENT ? 'http://localhost:9000/graphql': "https://agency-grapqhl-api.herokuapp.com/graphql", // Server URL (must be absolute)
 			credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
 			headers: { authorization: "TOKEN" },
 			fetch,
