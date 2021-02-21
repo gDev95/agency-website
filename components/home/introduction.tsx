@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useMediaQuery } from "react-responsive";
 import { CSSTransitionGroup } from "react-transition-group";
 import { FormattedMessage } from "react-intl";
 
-import { Container } from "../shared-ui";
+import { Container, useIsSmallScreen } from "../shared";
 
 // https://github.com/microsoft/TypeScript/issues/37597
 const SloganContainer = styled.div`
@@ -50,6 +49,7 @@ const CoverImageContainer = styled.div<{
 	background-image: ${({ backgroundImage }) => `url(${backgroundImage})`}; 
 	background-repeat: no-repeat
 	background-size: cover;
+  background-attachment: fixed;
 	background-position: center;
 `;
 const StyledButton = styled.button`
@@ -76,7 +76,7 @@ const StyledButton = styled.button`
 `;
 
 export const Introduction = () => {
-  const isMobileScreen = useMediaQuery({ query: "(max-width: 600px)" });
+  const isMobileScreen = useIsSmallScreen();
   return (
     <CoverImageContainer
       isMobileScreen={isMobileScreen}

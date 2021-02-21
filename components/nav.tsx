@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
-import { useMediaQuery } from "react-responsive";
+import { useIsSmallScreen } from "./shared";
 
 const StyledNav = styled.nav`
   color: #fff;
@@ -38,7 +38,7 @@ const StyledLink = styled.a`
 `;
 
 const Nav = ({ ...otherProps }) => {
-  const isMobileScreen = useMediaQuery({ query: "(max-width: 600px)" });
+  const isMobileScreen = useIsSmallScreen();
   const [isMenuOpen, setMenuOpen] = useState(false);
   return (
     <StyledNav {...otherProps}>

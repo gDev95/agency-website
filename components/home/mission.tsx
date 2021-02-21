@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useMediaQuery } from "react-responsive";
 import { FormattedMessage } from "react-intl";
+import { Container, Title, useIsSmallScreen } from "../shared";
 
 const MissionStatement = styled.div`
   flex-grow: 1;
@@ -12,19 +12,10 @@ const MissionStatement = styled.div`
   margin-right: 30px;
 `;
 
-const StyledSection = styled.section`
-  width: 100%;
-  display: flex;
-  margin: 24px auto;
-  justify-content: center;
-  height: 100%;
-  overflow: hidden;
-`;
-
 const ImageContainer = styled.div`
   flex-grow: 1;
-  height: 100%;
-  width: 100%;
+  height: 65%;
+  width: 65%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,16 +27,12 @@ const StyledImage = styled.img`
   max-height: 100%;
 `;
 
-const StyledHorizontalLine = styled.hr`
-  width: 30%;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-right: 70%;
+const StyledContainer = styled(Container)`
+  margin: 64px auto 64px auto;
 `;
-
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   display: flex;
-  width: 90%;
+  align-items: center;
   justify-content: space-between;
 `;
 const Styled = styled.span`
@@ -53,15 +40,12 @@ const Styled = styled.span`
 `;
 
 export const Mission = () => {
-  const isMobileScreen = useMediaQuery({ query: "(max-width: 600px)" });
+  const isMobileScreen = useIsSmallScreen();
   return (
-    <StyledSection>
-      <Wrapper>
+    <StyledContainer>
+      <Title value={<FormattedMessage id="Home.Mission.Header" />}></Title>
+      <StyledWrapper>
         <MissionStatement>
-          <h3>
-            <FormattedMessage id="Home.Mission.Header" />
-          </h3>
-          <StyledHorizontalLine />
           <p>
             <FormattedMessage id="Home.Mission.Details.Paragraph1" />
           </p>
@@ -85,7 +69,7 @@ export const Mission = () => {
             </Styled>
           </ImageContainer>
         )}
-      </Wrapper>
-    </StyledSection>
+      </StyledWrapper>
+    </StyledContainer>
   );
 };
