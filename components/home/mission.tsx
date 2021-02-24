@@ -1,21 +1,33 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { Container, Title, useIsSmallScreen } from "../../shared";
 
-const MissionStatement = styled.div`
+const MissionStatement = styled.div<{ isMobileScreen: boolean }>`
   flex-grow: 1;
   display: flex;
+  align-items: center;
   flex-direction: column;
   font-size: 20px;
   width: 100%;
-  margin-right: 30px;
+  ${({ isMobileScreen }) =>
+    !isMobileScreen &&
+    css`
+      margin-right: 30px;
+    `}
+`;
+
+const StyledHorizontalLine = styled.hr`
+  width: 60%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 70%;
 `;
 
 const ImageContainer = styled.div`
   flex-grow: 1;
   height: 65%;
-  width: 65%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,12 +35,14 @@ const ImageContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  width: 340px;
+  height: 340px;
 `;
 
 const StyledContainer = styled(Container)`
-  margin: 64px auto 64px auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 `;
 const StyledWrapper = styled.div`
   display: flex;
@@ -39,13 +53,20 @@ const Styled = styled.span`
   color: #666;
 `;
 
+const StyledTitle = styled(Title)`
+  align-self: start;
+`;
+
 export const Mission = () => {
   const isMobileScreen = useIsSmallScreen();
   return (
     <StyledContainer>
-      <Title value={<FormattedMessage id="Home.Mission.Header" />}></Title>
       <StyledWrapper>
-        <MissionStatement>
+        <MissionStatement isMobileScreen={isMobileScreen}>
+          <StyledTitle
+            value={<FormattedMessage id="Home.Mission.Header" />}
+          ></StyledTitle>
+          <StyledHorizontalLine />
           <p>
             <FormattedMessage id="Home.Mission.Details.Paragraph1" />
           </p>

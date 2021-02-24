@@ -3,16 +3,16 @@ import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
-import { ArtistsProfileImage, TArtist } from "../../shared";
-import { Typography } from "@material-ui/core";
+import { ArtistsProfileImage, TArtist, Title } from "../../shared";
+import Link from "next/link";
 
 const StyledSection = styled.section`
   width: 80%;
   display: flex;
   margin: 24px auto;
-  font-size: 13px;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  justify-content: center;
 `;
 
 const StyledHeaderWrapper = styled.div`
@@ -24,15 +24,15 @@ const StyledHeaderWrapper = styled.div`
 
 const StyledHorizontalLine = styled.hr`
   width: 30%;
-  margin-top: 0px;
+  margin-top: 2px;
   margin-bottom: 0px;
 `;
 
-const StyledHeader = styled.h1`
-  margin-bottom: 0;
+const StyledTitle = styled(Title)`
+  margin-bottom: 0 !important;
 `;
 
-const StyledSubheader = styled.h3`
+const StyledSubheader = styled.h5`
   margin-top: 8px;
   margin-bottom: 8px;
   color: #bfbfbf;
@@ -53,7 +53,7 @@ const ArtistContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
 `;
 
 export const ALL_ACTIVE_ARTISTS_QUERY = gql`
@@ -73,10 +73,9 @@ export const ArtistOverview = () => {
   return (
     <StyledSection>
       <StyledHeaderWrapper>
-        <StyledHeader>
-          <FormattedMessage id="Home.ArtistOverview.Header" />
-        </StyledHeader>
-
+        <StyledTitle
+          value={<FormattedMessage id="Home.ArtistOverview.Header" />}
+        />
         <StyledSubheader>
           <FormattedMessage id="Home.ArtistOverview.Subheader" />
         </StyledSubheader>
@@ -86,15 +85,22 @@ export const ArtistOverview = () => {
         {data &&
           data.artists.map(
             (artist: Omit<TArtist, "advancedInformation" | "socialMedia">) => (
-              <StyledArtistContent>
-                <ArtistsProfileImage
-                  src={artist.basicInformation.profileImageUrl}
-                  size="100"
-                />
-                <StyledArtistName>
-                  {artist.basicInformation.name}
-                </StyledArtistName>
-              </StyledArtistContent>
+              <Link
+                href={{
+                  pathname: "/artists",
+                  query: { id: artist.id }
+                }}
+              >
+                <StyledArtistContent>
+                  <ArtistsProfileImage
+                    src={artist.basicInformation.profileImageUrl}
+                    size="100"
+                  />
+                  <StyledArtistName>
+                    {artist.basicInformation.name}
+                  </StyledArtistName>
+                </StyledArtistContent>
+              </Link>
             )
           )}
       </ArtistContainer>

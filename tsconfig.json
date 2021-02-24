@@ -17,12 +17,10 @@
 		"isolatedModules": true
 	},
 	"include": [ 
-    "components/home/mission.tsx", 
-    "components/home/videoSection.tsx",
-		"pages/*",
-		"components/*",
+    "components/**/*", 
+		"pages/**/*",
 		"lib/*",
-		"components/home/introduction.tsx",
-		"components/home/artistSection.tsx"
-, "shared"	]
+		"shared/**/*",
+		"helpers/**/*"
+	]
 }

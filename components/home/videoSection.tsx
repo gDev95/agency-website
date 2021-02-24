@@ -2,7 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 
 import styled, { css } from "styled-components";
-import { useIsSmallScreen } from "../../shared";
+import { CoverImageContainer, useIsSmallScreen } from "../../shared";
 
 const StyledRoot = styled.div<{ isMobileScreen: boolean }>`
   display: flex;
@@ -10,7 +10,6 @@ const StyledRoot = styled.div<{ isMobileScreen: boolean }>`
   align-items: center;
   height: ${({ isMobileScreen }) => (isMobileScreen ? "36vh" : "48vh")};
   width: 100%;
-  background-color: #232323;
 `;
 
 const StyledReactPlayer = styled(ReactPlayer)<{ isMobileScreen: boolean }>`
@@ -29,8 +28,13 @@ interface PropsType {
 export const VideoSection = ({ embeddedVideoUrl }: PropsType) => {
   const isMobileScreen = useIsSmallScreen();
   return (
-    <StyledRoot isMobileScreen={isMobileScreen}>
-      <StyledReactPlayer url={embeddedVideoUrl} />
-    </StyledRoot>
+    <CoverImageContainer
+      isMobileScreen={isMobileScreen}
+      backgroundImage="/homepage-cover.png"
+    >
+      <StyledRoot isMobileScreen={isMobileScreen}>
+        <StyledReactPlayer url={embeddedVideoUrl} />
+      </StyledRoot>
+    </CoverImageContainer>
   );
 };

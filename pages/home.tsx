@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Mission } from "../components/home/mission";
 import { Introduction } from "../components/home/introduction";
 import { VideoSection } from "../components/home/videoSection";
-import { ArtistOverview } from "../components/home/artistSection";
+import { ArtistOverview } from "../components/home/artistOverview";
 
 const StyledSection = styled.section`
   display: flex;

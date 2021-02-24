@@ -47,7 +47,7 @@ const CoverImageContainer = styled.div<{
 	height:${({ isMobileScreen }) => (isMobileScreen ? "50vh" : "100vh")}
 	background-color: grey;
 	background-image: ${({ backgroundImage }) => `url(${backgroundImage})`}; 
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 	background-size: cover;
   background-attachment: fixed;
 	background-position: center;

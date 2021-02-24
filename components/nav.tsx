@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
 import { useIsSmallScreen } from "../shared";
+import { CSSTransitionGroup } from "react-transition-group";
 
 const StyledNav = styled.nav`
   color: #fff;
@@ -42,10 +43,17 @@ const Nav = ({ ...otherProps }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   return (
     <StyledNav {...otherProps}>
-      <h2>
-        <StyledLink href="/">Nobo Bookings</StyledLink>
-      </h2>
-
+      <CSSTransitionGroup
+        transitionName="mount-fade-in"
+        transitionAppear={true}
+        transitionAppearTimeout={1000}
+        transitionEnter={false}
+        transitionLeave={false}
+      >
+        <h2>
+          <StyledLink href="/">Nobo Bookings</StyledLink>
+        </h2>
+      </CSSTransitionGroup>
       {!isMobileScreen && (
         <NavList>
           <NavListItem>

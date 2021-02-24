@@ -1,4 +1,5 @@
 export type TArtist = {
+  id: string;
   basicInformation: TBasicInformation;
   advancedInformation: TAdvancedInformation;
   socialMedia: TSocialMedia;
