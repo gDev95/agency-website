@@ -1,4 +1,8 @@
 //next.config.js
-const withCSS = require("@zeit/next-css");
 
-module.exports = withCSS();
+module.exports = {
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "en"
+  }
+};

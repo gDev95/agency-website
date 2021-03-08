@@ -1,17 +1,15 @@
 import React from "react";
 import Head from "next/head";
 import { Nav, Footer } from "../shared/ui";
-import styled from "styled-components";
 import { IntlProvider } from "react-intl";
 import { useLanguage } from "../helpers";
 import { withApollo } from "../lib/apollo";
 
 import "../main.css";
-import { useIsSmallScreen } from "../shared";
 
 function App({ Component, pageProps }: any) {
   const { language, translations } = useLanguage();
-  const isMobileScreen = useIsSmallScreen();
+
   return (
     <IntlProvider messages={translations} locale={language} defaultLocale="en">
       <div>
