@@ -2,7 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
 import { Container, Title, useIsSmallScreen } from "../../shared";
-
+import { useInView } from "react-intersection-observer";
+import { Fade } from "@material-ui/core";
 const MissionStatement = styled.div<{ isMobileScreen: boolean }>`
   flex-grow: 1;
   display: flex;
@@ -58,19 +59,37 @@ const StyledTitle = styled(Title)`
 `;
 
 export const Mission = () => {
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0.3
+  });
+
   const isMobileScreen = useIsSmallScreen();
   return (
-    <StyledContainer isMobileScreen={isMobileScreen}>
-      <StyledWrapper>
-        <MissionStatement isMobileScreen={isMobileScreen}>
-          <StyledTitle
-            value={<FormattedMessage id="Home.Mission.Header" />}
-          ></StyledTitle>
-          <StyledHorizontalLine />
-          <p>
-            <FormattedMessage id="Home.Mission.Details.Paragraph1" />
-          </p>
-          {isMobileScreen && (
+    <StyledContainer ref={ref} isMobileScreen={isMobileScreen}>
+      <Fade in={inView} timeout={1000}>
+        <StyledWrapper>
+          <MissionStatement isMobileScreen={isMobileScreen}>
+            <StyledTitle
+              value={<FormattedMessage id="Home.Mission.Header" />}
+            ></StyledTitle>
+            <StyledHorizontalLine />
+            <p>
+              <FormattedMessage id="Home.Mission.Details.Paragraph1" />
+            </p>
+            {isMobileScreen && (
+              <ImageContainer>
+                <StyledImage src="/enric-ceo.jpg" />
+                <Styled>
+                  <FormattedMessage id="Home.Mission.FounderImage.Description" />
+                </Styled>
+              </ImageContainer>
+            )}
+            <p>
+              <FormattedMessage id="Home.Mission.Details.Paragraph2" />
+            </p>
+          </MissionStatement>
+          {!isMobileScreen && (
             <ImageContainer>
               <StyledImage src="/enric-ceo.jpg" />
               <Styled>
@@ -78,19 +97,8 @@ export const Mission = () => {
               </Styled>
             </ImageContainer>
           )}
-          <p>
-            <FormattedMessage id="Home.Mission.Details.Paragraph2" />
-          </p>
-        </MissionStatement>
-        {!isMobileScreen && (
-          <ImageContainer>
-            <StyledImage src="/enric-ceo.jpg" />
-            <Styled>
-              <FormattedMessage id="Home.Mission.FounderImage.Description" />
-            </Styled>
-          </ImageContainer>
-        )}
-      </StyledWrapper>
+        </StyledWrapper>
+      </Fade>
     </StyledContainer>
   );
 };

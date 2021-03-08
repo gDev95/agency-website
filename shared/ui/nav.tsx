@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
+
 import { useIsSmallScreen } from "..";
+import { useInView } from "react-intersection-observer";
+import { Fade } from "@material-ui/core";
 
 const StyledNav = styled.nav`
   color: #fff;
   position: relative;
   left: 32px;
   right: 32px;
-  height: 60px;
+  height: 80px;
   display: flex;
   margin: auto;
   justify-content: space-between;
@@ -40,26 +43,34 @@ const StyledLink = styled.a`
 export const Nav = ({ ...otherProps }) => {
   const isMobileScreen = useIsSmallScreen();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0
+  });
   return (
-    <StyledNav {...otherProps}>
-      <h2>
-        <StyledLink href="/">Nobo Bookings</StyledLink>
-      </h2>
-      {!isMobileScreen && (
-        <NavList>
-          <NavListItem>
-            <StyledLink href="/">Home</StyledLink>
-          </NavListItem>
-          <NavListItem>
-            <StyledLink href="/artist">Artists</StyledLink>
-          </NavListItem>
-        </NavList>
-      )}
-      {isMobileScreen && (
-        <StyledIconMenuWrapper onClick={() => setMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
-        </StyledIconMenuWrapper>
-      )}
-    </StyledNav>
+    <div ref={ref}>
+      <Fade in={inView} timeout={1000}>
+        <StyledNav {...otherProps}>
+          <h2>
+            <StyledLink href="/">Nobo Bookings</StyledLink>
+          </h2>
+          {!isMobileScreen && (
+            <NavList>
+              <NavListItem>
+                <StyledLink href="/">Home</StyledLink>
+              </NavListItem>
+              <NavListItem>
+                <StyledLink href="/artist">Artists</StyledLink>
+              </NavListItem>
+            </NavList>
+          )}
+          {isMobileScreen && (
+            <StyledIconMenuWrapper onClick={() => setMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </StyledIconMenuWrapper>
+          )}
+        </StyledNav>
+      </Fade>
+    </div>
   );
 };

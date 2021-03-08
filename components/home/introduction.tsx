@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { CSSTransitionGroup } from "react-transition-group";
+
 import { FormattedMessage } from "react-intl";
 
 import { Container, useIsSmallScreen } from "../../shared";
+import { Fade } from "@material-ui/core";
 
 // https://github.com/microsoft/TypeScript/issues/37597
 const SloganContainer = styled.div`
@@ -36,10 +37,7 @@ const SloganWrapper = styled(Container as any)`
 
   transition: opacity 1s ease-in;
 `;
-const StyledHorizontalLine = styled.hr<{ isMobileScreen: boolean }>`
-  width: 80%;
-  color: #fff;
-`;
+
 const CoverImageContainer = styled.div<{
   isMobileScreen: boolean;
   backgroundImage: string;
@@ -75,26 +73,28 @@ const StyledButton = styled.button`
   }
 `;
 
+const StyledHorizontalLine = styled.hr<{ isMobileScreen: boolean }>`
+  color: #fff;
+  width: 80%;
+`;
+
 export const Introduction = () => {
   const isMobileScreen = useIsSmallScreen();
+
   return (
     <CoverImageContainer
       isMobileScreen={isMobileScreen}
       backgroundImage="/homepage-cover.png"
     >
-      <CSSTransitionGroup
-        transitionName="mount-fade-in"
-        transitionAppear={true}
-        transitionAppearTimeout={1000}
-        transitionEnter={false}
-        transitionLeave={false}
-      >
+      <Fade in={true} timeout={1000}>
         <SloganContainer>
           <SloganWrapper>
             <h2>
               <FormattedMessage id="Home.CompanyName" />
             </h2>
+
             <StyledHorizontalLine isMobileScreen={isMobileScreen} />
+
             <h1>
               <FormattedMessage id="Home.Slogan" />
             </h1>
@@ -103,7 +103,7 @@ export const Introduction = () => {
             </StyledButton>
           </SloganWrapper>
         </SloganContainer>
-      </CSSTransitionGroup>
+      </Fade>
     </CoverImageContainer>
   );
 };
