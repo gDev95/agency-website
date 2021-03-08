@@ -45,7 +45,9 @@ const StyledArtistContent = styled.div`
   padding: 56px 0;
   align-items: center;
   flex-wrap: wrap;
+  cursor: pointer;
 `;
+
 const StyledArtistName = styled.div`
   margin-top: 8px;
 `;

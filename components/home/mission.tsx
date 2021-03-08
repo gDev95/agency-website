@@ -39,8 +39,8 @@ const StyledImage = styled.img`
   height: 340px;
 `;
 
-const StyledContainer = styled(Container)`
-  height: 100vh;
+const StyledContainer = styled(Container)<{ isMobileScreen: boolean }>`
+  min-height: ${({ isMobileScreen }) => (isMobileScreen ? `100%` : `100vh`)};
   display: flex;
   align-items: center;
 `;
@@ -60,7 +60,7 @@ const StyledTitle = styled(Title)`
 export const Mission = () => {
   const isMobileScreen = useIsSmallScreen();
   return (
-    <StyledContainer>
+    <StyledContainer isMobileScreen={isMobileScreen}>
       <StyledWrapper>
         <MissionStatement isMobileScreen={isMobileScreen}>
           <StyledTitle
