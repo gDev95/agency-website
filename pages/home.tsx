@@ -11,7 +11,7 @@ const StyledSection = styled.section`
   align-items: space-between;
 `;
 
-export const Home = () => {
+const Home = () => {
   return (
     <StyledSection>
       <Introduction />
@@ -20,3 +20,5 @@ export const Home = () => {
     </StyledSection>
   );
 };
+
+export default Home;

@@ -7,7 +7,7 @@ import { useLanguage } from "../helpers";
 import { withApollo } from "../lib/apollo";
 
 import "../main.css";
-import { Home } from "./home";
+import Home from "./home";
 import { useIsSmallScreen } from "../shared";
 
 const StyledNav = styled(Nav)<{ isMobileScreen: boolean }>`
