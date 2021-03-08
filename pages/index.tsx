@@ -8,15 +8,17 @@ import { withApollo } from "../lib/apollo";
 
 import "../main.css";
 import { Home } from "./home";
+import { useIsSmallScreen } from "../shared";
 
-const StyledNav = styled(Nav)`
-  position: absolute;
+const StyledNav = styled(Nav)<{ isMobileScreen: boolean }>`
+  position: ${({ isMobileScreen }) => (isMobileScreen ? "fixed" : "absolute")};
+  background-color: transparent;
   z-index: 1;
 `;
 
 const App = () => {
   const { language, translations } = useLanguage();
-
+  const isMobileScreen = useIsSmallScreen();
   return (
     <IntlProvider messages={translations} locale={language} defaultLocale="en">
       <div>
@@ -32,7 +34,7 @@ const App = () => {
             rel="stylesheet"
           />
         </Head>
-        <StyledNav />
+        <StyledNav isMobileScreen={isMobileScreen} />
         <Home />
         <Footer />
       </div>

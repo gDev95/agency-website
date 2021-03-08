@@ -24,7 +24,11 @@ export const Footer = () => {
     <StyledFooter>
       <FooterItems>
         {footerItems.map((item: FooterItemType) => {
-          return <FooterItem link={item.link}>{item.icon}</FooterItem>;
+          return (
+            <FooterItem key={item.name} link={item.link}>
+              {item.icon}
+            </FooterItem>
+          );
         })}
       </FooterItems>
     </StyledFooter>

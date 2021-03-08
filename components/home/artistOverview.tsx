@@ -100,6 +100,7 @@ export const ArtistOverview = () => {
                     artist: Omit<TArtist, "advancedInformation" | "socialMedia">
                   ) => (
                     <Link
+                      key={artist.id}
                       href={{
                         pathname: "/artists",
                         query: { id: artist.id }

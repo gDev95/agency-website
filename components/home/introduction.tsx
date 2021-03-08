@@ -98,9 +98,6 @@ export const Introduction = () => {
             <h1>
               <FormattedMessage id="Home.Slogan" />
             </h1>
-            <StyledButton>
-              <FormattedMessage id="Home.MoreInfo" />
-            </StyledButton>
           </SloganWrapper>
         </SloganContainer>
       </Fade>
