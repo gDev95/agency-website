@@ -13,6 +13,7 @@
 		"esModuleInterop": true,
 		"moduleResolution": "node",
 		"jsx": "preserve",
+		"rootDir": "./",
 		"resolveJsonModule": true,
 		"isolatedModules": true
 	},

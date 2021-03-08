@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { Mission } from "../components/home/mission";
 import { Introduction } from "../components/home/introduction";
-import { VideoSection } from "../components/home/videoSection";
 import { ArtistOverview } from "../components/home/artistOverview";
 
 const StyledSection = styled.section`
@@ -17,7 +16,6 @@ export const Home = () => {
     <StyledSection>
       <Introduction />
       <Mission />
-      <VideoSection embeddedVideoUrl="https://www.youtube.com/watch?v=Jb4prVsXkZU&ab_channel=BretCopeland" />
       <ArtistOverview />
     </StyledSection>
   );

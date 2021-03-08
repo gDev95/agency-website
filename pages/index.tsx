@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Nav from "../components/nav";
+import { Nav, Footer } from "../shared/ui";
 import styled from "styled-components";
 import { IntlProvider } from "react-intl";
 import { useLanguage } from "../helpers";
@@ -34,6 +34,7 @@ const App = () => {
         </Head>
         <StyledNav />
         <Home />
+        <Footer />
       </div>
     </IntlProvider>
   );
