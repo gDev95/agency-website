@@ -1,9 +1,14 @@
 {
+	"Nav.Home": "Home",
+	"Nav.Artists": "Artists",
+	"Nav.About": "About us",
 	"Home.CompanyName": "No Borders Booking",
 	"Home.Slogan": "When spread with love, music knows No Borders",
 	"Home.Mission.Header": "Visión",
 	"Home.Mission.Details.Paragraph1": "El mundo ha llegado a un punto muy crítico. Estamos viendo actos de odio, violencia, codicia e injusticia en todo el mundo. ",
 	"Home.Mission.Details.Paragraph2": "En NoBo Bookings creemos que la música es el conductor más poderoso del amor, una fuerza que puede vencer al odio y unir a todas las personas bajo un paraguas de tolerancia y respeto. Por eso nos centramos en encontrar talentos por descubrir. Queremos darles a todos esos jóvenes artistas apasionados la oportunidad de compartir su visión con el mundo. Queremos ser parte del proceso de unificación y compartir estas vibraciones deslumbrantes con todos vosotros.",
 	"Home.Mission.FounderImage.Description": "Enric - Founder of Nobo Bookings",
-	"Home.MoreInfo": "Más Informaciones"
+	"Home.MoreInfo": "Más Informaciones",
+	"Home.ArtistOverview.Header": "DJs",
+	"Home.ArtistOverview.Subheader": "See our best Artists (should be in spanish)"
 }
