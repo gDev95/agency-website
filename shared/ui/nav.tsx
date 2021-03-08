@@ -77,6 +77,13 @@ const MobileNavListItem = styled.li`
   list-style-type: none;
 `;
 
+const StyledNavWrapper = styled.div<{ isMobileScreen: boolean }>`
+  position: absolute;
+  background-color: transparent;
+  z-index: 1;
+  width: 100%;
+`;
+
 type MenuItemsType = {
   name: string;
   link: string;
@@ -93,12 +100,12 @@ export const Nav = ({ ...otherProps }: any) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0
+    threshold: 0.4
   });
   return (
-    <div ref={ref}>
+    <StyledNavWrapper ref={ref} {...otherProps}>
       <Fade in={inView} timeout={1000}>
-        <StyledNav {...otherProps}>
+        <StyledNav>
           <StyledWrapper>
             <h2>
               <StyledLink href="/">Nobo Bookings</StyledLink>
@@ -139,6 +146,6 @@ export const Nav = ({ ...otherProps }: any) => {
           )}
         </StyledNav>
       </Fade>
-    </div>
+    </StyledNavWrapper>
   );
 };

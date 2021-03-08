@@ -4,7 +4,7 @@
 	"private": true,
 	"engines": {
 		"node": "12.18.3"
-},
+	},
 	"scripts": {
 		"dev": "DEVELOPMENT=true next dev ",
 		"build": "next build",
