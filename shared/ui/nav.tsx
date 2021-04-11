@@ -46,10 +46,15 @@ const StyledIconMenuWrapper = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+`;
+
+const StyledCloseIcon = styled(CloseIcon)`
   position: absolute;
   top: 30px;
-  right: 0;
+  right: 30px;
   z-index: 2;
+  cursor: pointer;
+  color: ${Theme.white};
 `;
 
 const StyledMobileMenu = styled.div`
@@ -87,8 +92,13 @@ const StyledNavWrapper = styled.div<{ isMobileScreen: boolean }>`
   width: 100%;
 `;
 
-const StyledLanguageSelector = styled(LanguageSelector)<{ color: string }>`
-  color: ${({ color }) => (color ? color : Theme.white)};
+const StyledLanguageSelector = styled(LanguageSelector)<{
+  color: string;
+}>`
+  ${({ color }) => css`
+    color: ${color ? color : Theme.white};
+  `}
+  margin-left: 20px;
 `;
 
 type MenuItemsType = {
@@ -104,6 +114,7 @@ const menuItems: MenuItemsType[] = [
 
 export const Nav = ({ color, ...otherProps }: any) => {
   const isMobileScreen = useIsSmallScreen();
+
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
@@ -137,7 +148,7 @@ export const Nav = ({ color, ...otherProps }: any) => {
             {isMobileScreen && (
               <>
                 <StyledIconMenuWrapper onClick={() => setMenuOpen(!isMenuOpen)}>
-                  {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+                  <MenuIcon />
                 </StyledIconMenuWrapper>
               </>
             )}
@@ -145,6 +156,7 @@ export const Nav = ({ color, ...otherProps }: any) => {
           {isMenuOpen && (
             <Fade in={true} timeout={500}>
               <StyledMobileMenu>
+                <StyledCloseIcon onClick={() => setMenuOpen(!isMenuOpen)} />
                 <NavList isMobileScreen={isMobileScreen}>
                   {menuItems.map(item => (
                     <MobileNavListItem key={item.name}>

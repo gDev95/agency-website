@@ -8,9 +8,7 @@ import { Theme } from "../theme";
 
 const StyledRoot = styled.div`
   display: flex;
-
   position: relative;
-  margin-left: 50px;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -38,9 +36,10 @@ const StyledDropdownAnchor = styled.a`
   }
 `;
 
-export const LanguageSelector = ({ otherProps }: any) => {
+export const LanguageSelector = ({ ...otherProps }: any) => {
   const { language: currentLanguage, locale: currentLocale } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <StyledRoot {...otherProps}>
       <StyledDropdownAnchor onClick={() => setIsOpen(!isOpen)}>
