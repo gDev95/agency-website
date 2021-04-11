@@ -7,6 +7,7 @@ import { useIsSmallScreen } from "..";
 import { useInView } from "react-intersection-observer";
 import { Fade } from "@material-ui/core";
 import { FormattedMessage } from "react-intl";
+import { NoboBookingsLogo } from "./NoboBookingsLogo";
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -107,9 +108,13 @@ export const Nav = ({ ...otherProps }: any) => {
       <Fade in={inView} timeout={1000}>
         <StyledNav>
           <StyledWrapper>
-            <h2>
-              <StyledLink href="/">Nobo Bookings</StyledLink>
-            </h2>
+            <StyledLink href="/">
+              <NoboBookingsLogo
+                width={64}
+                height={64}
+                src="/nobo-bookings.png"
+              />
+            </StyledLink>
             {!isMobileScreen && (
               <NavList isMobileScreen={isMobileScreen}>
                 {menuItems.map(item => (
