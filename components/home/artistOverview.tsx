@@ -97,6 +97,7 @@ export const ArtistOverview = () => {
             </StyledHeaderWrapper>
             <ArtistContainer>
               {data &&
+                data.artists &&
                 data.artists.map(
                   (
                     artist: Omit<TArtist, "advancedInformation" | "socialMedia">

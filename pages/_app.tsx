@@ -9,11 +9,11 @@ import "../main.css";
 import { useRouter } from "next/router";
 
 function App({ Component, pageProps }: any) {
-  const { language, translations } = useLanguage();
+  const { locale, translations } = useLanguage();
   const { route } = useRouter();
   const isRouteHome = route === "/";
   return (
-    <IntlProvider messages={translations} locale={language} defaultLocale="en">
+    <IntlProvider messages={translations} locale={locale} defaultLocale="en">
       <div>
         <Head>
           <title>Nobo Bookings</title>
