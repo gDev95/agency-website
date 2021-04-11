@@ -8,10 +8,12 @@ import { useInView } from "react-intersection-observer";
 import { Fade } from "@material-ui/core";
 import { FormattedMessage } from "react-intl";
 import { NoboBookingsLogo } from "./NoboBookingsLogo";
+import { Theme } from "../theme";
+import { NavLink } from "./NavLink";
+import { LanguageSelector } from "./LanguageSelector";
 
 const StyledNav = styled.nav`
   width: 100%;
-  background-color: transparent;
 `;
 const NavList = styled.ul<{ isMobileScreen: boolean }>`
   display: flex;
@@ -33,6 +35,11 @@ const DesktopNavListItem = styled.li`
   margin-left: 20px;
   font-size: 18px;
   list-style-type: none;
+  border: none;
+
+  &:hover {
+    border-bottom: 1px solid ${Theme.primary};
+  }
 `;
 const StyledIconMenuWrapper = styled.div`
   transition: all 0.3s linear;
@@ -43,11 +50,6 @@ const StyledIconMenuWrapper = styled.div`
   top: 30px;
   right: 0;
   z-index: 2;
-`;
-
-const StyledLink = styled.a`
-  text-decoration: none;
-  color: #fff;
 `;
 
 const StyledMobileMenu = styled.div`
@@ -62,8 +64,8 @@ const StyledMobileMenu = styled.div`
   justify-content: space-around;
 `;
 
-const StyledWrapper = styled.div`
-  color: #fff;
+const StyledWrapper = styled.div<{ color: string }>`
+  color: ${({ color }) => (color ? color : Theme.white)};
   position: relative;
   height: 80px;
   display: flex;
@@ -85,6 +87,10 @@ const StyledNavWrapper = styled.div<{ isMobileScreen: boolean }>`
   width: 100%;
 `;
 
+const StyledLanguageSelector = styled(LanguageSelector)<{ color: string }>`
+  color: ${({ color }) => (color ? color : Theme.white)};
+`;
+
 type MenuItemsType = {
   name: string;
   link: string;
@@ -96,36 +102,38 @@ const menuItems: MenuItemsType[] = [
   { name: "Nav.About", link: "/about" }
 ];
 
-export const Nav = ({ ...otherProps }: any) => {
+export const Nav = ({ color, ...otherProps }: any) => {
   const isMobileScreen = useIsSmallScreen();
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.4
   });
+
   return (
     <StyledNavWrapper ref={ref} {...otherProps}>
       <Fade in={inView} timeout={1000}>
         <StyledNav>
-          <StyledWrapper>
-            <StyledLink href="/">
+          <StyledWrapper color={color}>
+            <NavLink href="/">
               <NoboBookingsLogo
                 width={64}
                 height={64}
                 src="/nobo-bookings.png"
               />
-            </StyledLink>
+            </NavLink>
             {!isMobileScreen && (
               <NavList isMobileScreen={isMobileScreen}>
                 {menuItems.map(item => (
                   <DesktopNavListItem key={item.name}>
-                    <StyledLink href={item.link}>
+                    <NavLink href={item.link} color={color}>
                       <FormattedMessage id={item.name} />
-                    </StyledLink>
+                    </NavLink>
                   </DesktopNavListItem>
                 ))}
               </NavList>
             )}
+            <StyledLanguageSelector color={color} />
             {isMobileScreen && (
               <>
                 <StyledIconMenuWrapper onClick={() => setMenuOpen(!isMenuOpen)}>
@@ -140,9 +148,9 @@ export const Nav = ({ ...otherProps }: any) => {
                 <NavList isMobileScreen={isMobileScreen}>
                   {menuItems.map(item => (
                     <MobileNavListItem key={item.name}>
-                      <StyledLink href={item.link}>
+                      <NavLink href={item.link}>
                         <FormattedMessage id={item.name} />
-                      </StyledLink>
+                      </NavLink>
                     </MobileNavListItem>
                   ))}
                 </NavList>

@@ -6,10 +6,12 @@ import { useLanguage } from "../helpers";
 import { withApollo } from "../lib/apollo";
 
 import "../main.css";
+import { useRouter } from "next/router";
 
 function App({ Component, pageProps }: any) {
   const { language, translations } = useLanguage();
-
+  const { route } = useRouter();
+  const isRouteHome = route === "/";
   return (
     <IntlProvider messages={translations} locale={language} defaultLocale="en">
       <div>
@@ -25,7 +27,7 @@ function App({ Component, pageProps }: any) {
             rel="stylesheet"
           />
         </Head>
-        <Nav />
+        <Nav color={isRouteHome ? null : "#000"} />
         <Component {...pageProps} />
         <Footer />
       </div>

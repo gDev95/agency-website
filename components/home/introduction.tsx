@@ -5,6 +5,7 @@ import { FormattedMessage } from "react-intl";
 
 import { Container, useIsSmallScreen } from "../../shared";
 import { Fade } from "@material-ui/core";
+import { Theme } from "../../shared/theme";
 
 const SloganContainer = styled.div`
   height: 100vh;
@@ -25,7 +26,7 @@ const SloganContainer = styled.div`
 
 // https://github.com/microsoft/TypeScript/issues/37597
 const SloganWrapper = styled(Container as any)`
-  color: #fff;
+  color: ${Theme.white};
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -50,7 +51,7 @@ const CoverImageContainer = styled.div<{
 `;
 
 const StyledHorizontalLine = styled.hr<{ isMobileScreen: boolean }>`
-  color: #fff;
+  border: 1px solid ${Theme.primary};
   width: 80%;
 `;
 

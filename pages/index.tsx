@@ -13,11 +13,13 @@ const StyledSection = styled.section`
 
 const Home = () => {
   return (
-    <StyledSection>
-      <Introduction />
-      <Mission />
-      <ArtistOverview />
-    </StyledSection>
+    <>
+      <StyledSection>
+        <Introduction />
+        <Mission />
+        <ArtistOverview />
+      </StyledSection>
+    </>
   );
 };
 

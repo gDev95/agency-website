@@ -7,6 +7,7 @@ import { ArtistsProfileImage, TArtist, Title } from "../../shared";
 import Link from "next/link";
 import { Fade } from "@material-ui/core";
 import { useInView } from "react-intersection-observer";
+import { Theme } from "../../shared/theme";
 
 const StyledSection = styled.section`
   width: 80%;
@@ -28,6 +29,7 @@ const StyledHorizontalLine = styled.hr`
   width: 30%;
   margin-top: 2px;
   margin-bottom: 0px;
+  border: 1px solid ${Theme.primary};
 `;
 
 const StyledTitle = styled(Title)`

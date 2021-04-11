@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { Container, Title, useIsSmallScreen } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { Fade } from "@material-ui/core";
+import { Theme } from "../../shared/theme";
 const MissionStatement = styled.div<{ isMobileScreen: boolean }>`
   flex-grow: 1;
   display: flex;
@@ -23,6 +24,7 @@ const StyledHorizontalLine = styled.hr`
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 70%;
+  border: 0.5px solid ${Theme.primary};
 `;
 
 const ImageContainer = styled.div`
