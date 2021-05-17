@@ -27,7 +27,7 @@ function App({ Component, pageProps }: any) {
             rel="stylesheet"
           />
         </Head>
-        <Nav color={isRouteHome ? null : "#000"} />
+        <Nav />
         <Component {...pageProps} />
         <Footer />
       </div>

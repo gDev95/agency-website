@@ -85,12 +85,13 @@ const ArtistContainer = styled.div`
 
 
 export const ALL_ACTIVE_ARTISTS_QUERY = gql`
-  query Artists {
-    artists(isDraft: false) {
+  query Artists($isDraft: Boolean!) {
+    artists(isDraft: $isDraft) {
       id
       basicInformation {
         name
         profileImageUrl
+        isDraft
       }
     }
   }
@@ -99,7 +100,7 @@ export const ALL_ACTIVE_ARTISTS_QUERY = gql`
 
 
 export const ArtistOverview = () => {
-  const { data } = useQuery(ALL_ACTIVE_ARTISTS_QUERY);
+  const { data } = useQuery(ALL_ACTIVE_ARTISTS_QUERY, { variables: { isDraft: false } });
   const [hoveredArtistId, setHoveredArtistId] = useState<string | null>()
   const { ref, inView } = useInView({
     /* Optional options */
