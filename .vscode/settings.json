@@ -4,7 +4,6 @@
         "typescriptreact"
     ],
     "javascript.validate.enable": true,
-    "flow.runOnAllFiles": false,
     "eslint.options": {
         "rules": {
             "no-debugger": "off"
