@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
-import { ArtistsProfileImage, TArtist, Title } from "../../shared";
+import { ArtistsProfileImage, TArtist, Title, useIsSmallScreen } from "../../shared";
 import Link from "next/link";
 import { Fade } from "@material-ui/core";
 import { useInView } from "react-intersection-observer";
 import { Theme } from "../../shared/theme";
 
-const StyledSection = styled.section`
+
+const ARTIST_PROFILE_IMAGE_SIZE = 266;
+const ARTIST_PADDING_VERTICAL = 56;
+const ARTIST_PADDING_HORIZONTAL = 24;
+
+
+const StyledSection = styled.section<{ isMobileScreen: boolean }>`
   width: 80%;
   display: flex;
   margin: 24px auto;
   flex-direction: column;
-  height: 100vh;
+  height: ${({ isMobileScreen }) => (isMobileScreen ? `100%` : `100vh`)};
   justify-content: center;
 `;
 
@@ -43,24 +49,40 @@ const StyledSubheader = styled.h5`
 `;
 
 const StyledArtistContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 56px 0;
-  align-items: center;
-  flex-wrap: wrap;
+  position: relative;
+  padding: ${ARTIST_PADDING_VERTICAL}px ${ARTIST_PADDING_HORIZONTAL}px;
   cursor: pointer;
+
+ 
 `;
 
-const StyledArtistName = styled.div`
-  margin-top: 8px;
+const AristNameOverlay = styled.div`
+  /* OUTER POSITIONING */ 
+  position: absolute;
+  top: ${ARTIST_PADDING_VERTICAL}px;
+  left: ${ARTIST_PADDING_HORIZONTAL}px;
+  height: ${ARTIST_PROFILE_IMAGE_SIZE}px;
+  width: ${ARTIST_PROFILE_IMAGE_SIZE}px;
+  /* INNER LAYOUT */ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background: rgb(0,0,0,0.6);
+  border-radius: ${ARTIST_PROFILE_IMAGE_SIZE / 2}px;
+  color: ${Theme.white};
+
 `;
 const ArtistContainer = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 80%;
   margin: 0 auto;
 `;
+
+
+
 
 export const ALL_ACTIVE_ARTISTS_QUERY = gql`
   query Artists {
@@ -74,15 +96,18 @@ export const ALL_ACTIVE_ARTISTS_QUERY = gql`
   }
 `;
 
+
+
 export const ArtistOverview = () => {
   const { data } = useQuery(ALL_ACTIVE_ARTISTS_QUERY);
+  const [hoveredArtistId, setHoveredArtistId] = useState<string | null>()
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.1
   });
-
+  const isMobileScreen = useIsSmallScreen();
   return (
-    <StyledSection>
+    <StyledSection isMobileScreen={isMobileScreen} id="artists">
       <div ref={ref}>
         <Fade in={inView} timeout={1000}>
           <div>
@@ -102,6 +127,7 @@ export const ArtistOverview = () => {
                   (
                     artist: Omit<TArtist, "advancedInformation" | "socialMedia">
                   ) => (
+
                     <Link
                       key={artist.id}
                       href={{
@@ -109,18 +135,24 @@ export const ArtistOverview = () => {
                         query: { id: artist.id }
                       }}
                     >
-                      <StyledArtistContent>
+                      <StyledArtistContent onMouseEnter={() => setHoveredArtistId(artist.id)} onMouseLeave={() => setHoveredArtistId(null)}>
+
+                        <Fade in={hoveredArtistId === artist.id} timeout={500}>
+                          <AristNameOverlay>
+                            {artist.basicInformation.name}
+                          </AristNameOverlay>
+                        </Fade>
                         <ArtistsProfileImage
                           src={artist.basicInformation.profileImageUrl}
-                          size="100"
+                          size={ARTIST_PROFILE_IMAGE_SIZE}
                         />
-                        <StyledArtistName>
-                          {artist.basicInformation.name}
-                        </StyledArtistName>
                       </StyledArtistContent>
                     </Link>
+
+
                   )
                 )}
+
             </ArtistContainer>
           </div>
         </Fade>

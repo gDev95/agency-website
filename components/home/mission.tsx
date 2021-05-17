@@ -69,7 +69,7 @@ export const Mission = () => {
 
   const isMobileScreen = useIsSmallScreen();
   return (
-    <StyledContainer ref={ref} isMobileScreen={isMobileScreen}>
+    <StyledContainer id="mission" ref={ref} isMobileScreen={isMobileScreen}>
       <Fade in={inView} timeout={1000}>
         <StyledWrapper>
           <MissionStatement isMobileScreen={isMobileScreen}>

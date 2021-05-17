@@ -92,7 +92,7 @@ const StyledNavWrapper = styled.div<{ isMobileScreen: boolean }>`
   width: 100%;
 `;
 
-const StyledLanguageSelector = styled(LanguageSelector)<{
+const StyledLanguageSelector = styled(LanguageSelector) <{
   color: string;
 }>`
   ${({ color }) => css`
@@ -108,8 +108,8 @@ type MenuItemsType = {
 
 const menuItems: MenuItemsType[] = [
   { name: "Nav.Home", link: "/" },
-  { name: "Nav.Artists", link: "/artists" },
-  { name: "Nav.About", link: "/about" }
+  { name: "Nav.Artists", link: "#artists" },
+  { name: "Nav.About", link: "#mission" }
 ];
 
 export const Nav = ({ color, ...otherProps }: any) => {
