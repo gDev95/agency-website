@@ -108,8 +108,8 @@ type MenuItemsType = {
 
 const menuItems: MenuItemsType[] = [
   { name: "Nav.Home", link: "/" },
-  { name: "Nav.Artists", link: "#artists" },
-  { name: "Nav.About", link: "#mission" }
+  { name: "Nav.About", link: "#mission" },
+  { name: "Nav.Artists", link: "#artists" }
 ];
 
 export const Nav = ({ color, ...otherProps }: any) => {
