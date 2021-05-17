@@ -35,14 +35,14 @@ const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
 `;
 
-const StyledImage = styled.img`
-  width: 340px;
-  height: 340px;
+const StyledImage = styled.img<{ isMobileScreen?: boolean }>`
+  width: ${({ isMobileScreen }) => (isMobileScreen ? `220px` : `340px`)};
 `;
 
-const StyledContainer = styled(Container)<{ isMobileScreen: boolean }>`
+const StyledContainer = styled(Container) <{ isMobileScreen: boolean }>`
   min-height: ${({ isMobileScreen }) => (isMobileScreen ? `100%` : `100vh`)};
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ export const Mission = () => {
             </p>
             {isMobileScreen && (
               <ImageContainer>
-                <StyledImage src="/enric-ceo.jpg" />
+                <StyledImage isMobileScreen={true} src="/enric-ceo.jpg" />
                 <Styled>
                   <FormattedMessage id="Home.Mission.FounderImage.Description" />
                 </Styled>

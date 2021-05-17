@@ -50,7 +50,7 @@ export const LanguageSelector = ({ ...otherProps }: any) => {
         {SupportedLanguages.filter(
           language => language.locale !== currentLocale
         ).map(language => (
-          <StyledNavLink href={language.link}>{language.name}</StyledNavLink>
+          <StyledNavLink key={language.name} href={language.link}>{language.name}</StyledNavLink>
         ))}
       </StyledDropdownMenu>
     </StyledRoot>

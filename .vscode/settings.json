@@ -1,6 +1,5 @@
 {
     "editor.tabSize": 2,
-    "eslint.enable": true,
     "eslint.validate": [
         "typescriptreact"
     ],
@@ -20,8 +19,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "eslint.codeAction.disableRuleComment": {
-    
-    },
+    "eslint.codeAction.disableRuleComment": {},
     "typescript.tsdk": "node_modules/typescript/lib"
 }
