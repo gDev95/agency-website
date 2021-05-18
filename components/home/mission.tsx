@@ -42,7 +42,7 @@ const StyledImage = styled.img<{ isMobileScreen?: boolean }>`
   width: ${({ isMobileScreen }) => (isMobileScreen ? `220px` : `340px`)};
 `;
 
-const StyledContainer = styled(Container) <{ isMobileScreen: boolean }>`
+const StyledContainer = styled(Container)<{ isMobileScreen: boolean }>`
   min-height: ${({ isMobileScreen }) => (isMobileScreen ? `100%` : `100vh`)};
   display: flex;
   align-items: center;

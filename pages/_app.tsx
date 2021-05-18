@@ -6,12 +6,10 @@ import { useLanguage } from "../helpers";
 import { withApollo } from "../lib/apollo";
 
 import "../main.css";
-import { useRouter } from "next/router";
 
 function App({ Component, pageProps }: any) {
   const { locale, translations } = useLanguage();
-  const { route } = useRouter();
-  const isRouteHome = route === "/";
+
   return (
     <IntlProvider messages={translations} locale={locale} defaultLocale="en">
       <div>

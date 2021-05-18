@@ -5,7 +5,7 @@ import { FooterItem } from "./footerItem";
 
 const FOOTER_HEIGHT = 48;
 
-const StyledFooter = styled.div`
+const StyledRoot = styled.div`
   height: ${FOOTER_HEIGHT}px;
   width: 100%;
   display: flex;
@@ -21,7 +21,7 @@ const FooterItems = styled.li`
 
 export const Footer = () => {
   return (
-    <StyledFooter>
+    <StyledRoot>
       <FooterItems>
         {footerItems.map((item: FooterItemType) => {
           return (
@@ -31,6 +31,6 @@ export const Footer = () => {
           );
         })}
       </FooterItems>
-    </StyledFooter>
+    </StyledRoot>
   );
 };
