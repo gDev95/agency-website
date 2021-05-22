@@ -49,6 +49,11 @@ export const GET_ARTIST_QUERY = gql`
           logoUrl
           link
         }
+        setup {
+          equipmentImageUrl
+          equipment
+        }
+        hospitality
       }
     }
   }
@@ -95,6 +100,18 @@ const ArtistsPage = () => {
             );
           })}
         </LabelsWrapper>
+        <h2>{formatMessage({ id: "Artist.Setup" })}</h2>
+        <ul>
+          {artist.advancedInformation.setup.equipment.map((item: string) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <h2>{formatMessage({ id: "Artist.Hospitality" })}</h2>
+        <ul>
+          {artist.advancedInformation.hospitality.map((item: string) => (
+            <li>{item}</li>
+          ))}
+        </ul>
       </ArtistInformationContainer>
     </StyledRoot>
   ) : null;

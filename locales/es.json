@@ -12,5 +12,7 @@
 	"Home.ArtistOverview.Header": "DJs",
 	"Home.ArtistOverview.Subheader": "See our best Artists (should be in spanish)",
 	"Artist.Biography": "Biography",
-	"Artist.Labels": "Labels"
+	"Artist.Labels": "Labels",
+	"Artist.Setup": "Setup",
+	"Artist.Hospitality": "Hospitality"
 }
