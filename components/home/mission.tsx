@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
-import { Container, Title, useIsSmallScreen } from "../../shared";
+import {
+  Container,
+  GET_PAGE_CONTENT,
+  Title,
+  useIsSmallScreen
+} from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { Fade } from "@material-ui/core";
 import { Theme } from "../../shared/theme";
+import { useQuery } from "@apollo/react-hooks";
+import { PageContentContext } from "../../shared/pageContent";
+import { useLanguage } from "../../helpers";
 const MissionStatement = styled.div<{ isMobileScreen: boolean }>`
   flex-grow: 1;
   display: flex;
@@ -46,6 +54,7 @@ const StyledContainer = styled(Container)<{ isMobileScreen: boolean }>`
   min-height: ${({ isMobileScreen }) => (isMobileScreen ? `100%` : `100vh`)};
   display: flex;
   align-items: center;
+  margin-bottom: 56px;
 `;
 const StyledWrapper = styled.div`
   display: flex;
@@ -66,6 +75,12 @@ export const Mission = () => {
     /* Optional options */
     threshold: 0.3
   });
+  const pageId = useContext(PageContentContext);
+  const { data: pageContentData } = useQuery(GET_PAGE_CONTENT, {
+    variables: { id: pageId }
+  });
+
+  const { locale } = useLanguage();
 
   const isMobileScreen = useIsSmallScreen();
   return (
@@ -77,9 +92,7 @@ export const Mission = () => {
               value={<FormattedMessage id="Home.Mission.Header" />}
             ></StyledTitle>
             <StyledHorizontalLine />
-            <p>
-              <FormattedMessage id="Home.Mission.Details.Paragraph1" />
-            </p>
+            <p>{pageContentData?.pageContent?.mission[locale]}</p>
             {isMobileScreen && (
               <ImageContainer>
                 <StyledImage isMobileScreen={true} src="/enric-ceo.jpg" />
@@ -88,9 +101,6 @@ export const Mission = () => {
                 </Styled>
               </ImageContainer>
             )}
-            <p>
-              <FormattedMessage id="Home.Mission.Details.Paragraph2" />
-            </p>
           </MissionStatement>
           {!isMobileScreen && (
             <ImageContainer>
