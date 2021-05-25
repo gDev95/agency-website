@@ -151,7 +151,12 @@ export const Nav = ({ color, ...otherProps }: PropsType) => {
             <StyledLanguageSelector color={color} />
             {isMobileScreen && (
               <>
-                <StyledIconMenuWrapper onClick={() => setMenuOpen(!isMenuOpen)}>
+                <StyledIconMenuWrapper
+                  onClick={() => {
+                    setMenuOpen(!isMenuOpen);
+                    document.body.style.overflow = "hidden";
+                  }}
+                >
                   <MenuIcon />
                 </StyledIconMenuWrapper>
               </>
@@ -160,7 +165,12 @@ export const Nav = ({ color, ...otherProps }: PropsType) => {
           {isMenuOpen && (
             <Fade in={true} timeout={500}>
               <StyledMobileMenu>
-                <StyledCloseIcon onClick={() => setMenuOpen(!isMenuOpen)} />
+                <StyledCloseIcon
+                  onClick={() => {
+                    setMenuOpen(!isMenuOpen);
+                    document.body.style.overflow = "scroll";
+                  }}
+                />
                 <NavList isMobileScreen={isMobileScreen}>
                   {menuItems.map(item => (
                     <MobileNavListItem key={item.name}>
