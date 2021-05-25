@@ -10,5 +10,9 @@
 	"Home.Mission.FounderImage.Description": "Enric - Founder of Nobo Bookings",
 	"Home.ArtistOverview.Header": "Artists",
 	"Home.ArtistOverview.Subheader": "See our best Artists",
-	"More": "More"
+	"Artist.Biography": "Biography",
+	"Artist.Labels": "Labels",
+	"Artist.Setup": "Setup",
+	"Artist.Hospitality": "Hospitality",
+	"Artist.ContactDetails": "For booking request contact:"
 }

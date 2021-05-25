@@ -16,8 +16,8 @@ const Home = () => {
     <>
       <StyledSection>
         <Introduction />
-        <Mission />
         <ArtistOverview />
+        <Mission />
       </StyledSection>
     </>
   );

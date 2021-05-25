@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { FormattedMessage } from "react-intl";
 
-import { Container, useIsSmallScreen } from "../../shared";
+import { Container, GET_PAGE_CONTENT, useIsSmallScreen } from "../../shared";
 import { Fade } from "@material-ui/core";
 import { Theme } from "../../shared/theme";
-
+import { useQuery } from "@apollo/react-hooks";
+import { useLanguage } from "../../shared/helpers";
+import { PageContentContext } from "../../shared/pageContent";
 const SloganContainer = styled.div`
   height: 100vh;
   display: flex;
@@ -57,7 +59,11 @@ const StyledHorizontalLine = styled.hr<{ isMobileScreen: boolean }>`
 
 export const Introduction = () => {
   const isMobileScreen = useIsSmallScreen();
-
+  const pageId = useContext(PageContentContext);
+  const { data: pageContentData } = useQuery(GET_PAGE_CONTENT, {
+    variables: { id: pageId }
+  });
+  const { locale } = useLanguage();
   return (
     <CoverImageContainer isMobileScreen={isMobileScreen}>
       <Fade in={true} timeout={1000}>
@@ -69,9 +75,7 @@ export const Introduction = () => {
 
             <StyledHorizontalLine isMobileScreen={isMobileScreen} />
 
-            <h1>
-              <FormattedMessage id="Home.Slogan" />
-            </h1>
+            <h1>{pageContentData?.pageContent?.slogan[locale]}</h1>
           </SloganWrapper>
         </SloganContainer>
       </Fade>

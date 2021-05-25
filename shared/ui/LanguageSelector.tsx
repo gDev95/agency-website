@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useLanguage } from "../../helpers";
-import { SupportedLanguages } from "../../helpers/useLanguage";
+import { useLanguage } from "../helpers";
+import { SupportedLanguages } from "../helpers/useLanguage";
 import { NavLink } from "./NavLink";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { Theme } from "../theme";
@@ -50,7 +50,9 @@ export const LanguageSelector = ({ ...otherProps }: any) => {
         {SupportedLanguages.filter(
           language => language.locale !== currentLocale
         ).map(language => (
-          <StyledNavLink key={language.name} href={language.link}>{language.name}</StyledNavLink>
+          <StyledNavLink key={language.name} href={language.link}>
+            {language.name}
+          </StyledNavLink>
         ))}
       </StyledDropdownMenu>
     </StyledRoot>

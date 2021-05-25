@@ -11,5 +11,9 @@
 	"Home.MoreInfo": "Más Informaciones",
 	"Home.ArtistOverview.Header": "DJs",
 	"Home.ArtistOverview.Subheader": "See our best Artists (should be in spanish)",
-	"More": "Mas"
+	"Artist.Biography": "Biography",
+	"Artist.Labels": "Labels",
+	"Artist.Setup": "Setup",
+	"Artist.Hospitality": "Hospitality",
+	"Artist.ContactDetails": "For booking request contact:"
 }

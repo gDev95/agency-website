@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Head from "next/head";
 import { Nav, Footer } from "../shared/ui";
 import { IntlProvider } from "react-intl";
-import { useLanguage } from "../helpers";
+import { useLanguage } from "../shared/helpers";
 import { withApollo } from "../lib/apollo";
 
 import "../main.css";
-import { useRouter } from "next/router";
+import { PageContentContext } from "../shared/pageContent";
 
 function App({ Component, pageProps }: any) {
   const { locale, translations } = useLanguage();
-  const { route } = useRouter();
-  const isRouteHome = route === "/";
+  const pageId = useMemo(() => {
+    if (!process.env.NEXT_PUBLIC_CONTENT_PAGE_ID) {
+      throw new Error("Expected env CONTENT_PAGE_ID but it did not exist");
+    }
+
+    return process.env.NEXT_PUBLIC_CONTENT_PAGE_ID;
+  }, []);
+
   return (
     <IntlProvider messages={translations} locale={locale} defaultLocale="en">
       <div>
@@ -27,9 +33,11 @@ function App({ Component, pageProps }: any) {
             rel="stylesheet"
           />
         </Head>
-        <Nav color={isRouteHome ? null : "#000"} />
-        <Component {...pageProps} />
-        <Footer />
+        <PageContentContext.Provider value={pageId}>
+          <Nav />
+          <Component {...pageProps} />
+          <Footer />
+        </PageContentContext.Provider>
       </div>
     </IntlProvider>
   );
