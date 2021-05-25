@@ -43,12 +43,12 @@ export const Footer = () => {
       },
       {
         name: "instagram",
-        link: pageContentData?.pageContent.socialMedia.facebook,
+        link: pageContentData?.pageContent.socialMedia.instagram,
         icon: getSocialMediaIcon("instagram")
       },
       {
-        name: "soundcloud",
-        link: pageContentData?.pageContent.socialMedia.facebook,
+        name: "soundCloud",
+        link: pageContentData?.pageContent.socialMedia.soundCloud,
         icon: getSocialMediaIcon("soundCloud")
       }
     ];

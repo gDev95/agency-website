@@ -9,5 +9,4 @@ export const ArtistsProfileImage = styled.img<{
       border-radius: ${size / 2}px;
       object-fit: cover;
   `}
- 
 `;

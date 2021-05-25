@@ -14,7 +14,11 @@ export const GET_PAGE_CONTENT = gql`
       socialMedia {
         facebook
         instagram
-        soundcloud
+        soundCloud
+      }
+      contactDetails {
+        phone
+        email
       }
     }
   }
