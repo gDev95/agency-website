@@ -7,7 +7,7 @@ import { Container, GET_PAGE_CONTENT, useIsSmallScreen } from "../../shared";
 import { Fade } from "@material-ui/core";
 import { Theme } from "../../shared/theme";
 import { useQuery } from "@apollo/react-hooks";
-import { useLanguage } from "../../helpers";
+import { useLanguage } from "../../shared/helpers";
 import { PageContentContext } from "../../shared/pageContent";
 const SloganContainer = styled.div`
   height: 100vh;

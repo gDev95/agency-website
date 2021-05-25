@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
-import gql from "graphql-tag";
 import React from "react";
 import styled from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
 
 import { Cover } from "../../components/artist/cover";
 import Link from "next/link";
-import { TLabel } from "../../shared";
+import { GET_ARTIST_QUERY, TLabel } from "../../shared";
 import { useIntl } from "react-intl";
+import { prepareLink } from "../../shared";
+import { SocialMediaList } from "../../components/artist/socialMedia";
 
 const StyledRoot = styled.div`
   margin-bottom: 80px;
@@ -33,52 +34,19 @@ const LabelsWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export const GET_ARTIST_QUERY = gql`
-  query Artists($id: ID!) {
-    artist(id: $id) {
-      id
-      basicInformation {
-        name
-        description
-        profileImageUrl
-        coverImageUrl
-        logoUrl
-      }
-      advancedInformation {
-        labels {
-          logoUrl
-          link
-        }
-        setup {
-          equipmentImageUrl
-          equipment
-        }
-        hospitality
-      }
-    }
-  }
-`;
-
 const ArtistsPage = () => {
   const router = useRouter();
   const artistId = router.query.id;
   const { formatMessage } = useIntl();
   const { data } = useQuery(GET_ARTIST_QUERY, { variables: { id: artistId } });
 
-  if (!artistId) {
+  if (!artistId || typeof artistId !== "string") {
     // go to artist overview page
     return <p>400 not found</p>;
   }
 
   const artist = data ? data.artist : null;
 
-  const prepareLink = (url: string) => {
-    if (url.match(/https?/)) {
-      return url;
-    }
-
-    return `https://${url}`;
-  };
   // show specific artist page
   return artist ? (
     <StyledRoot>
@@ -88,6 +56,7 @@ const ArtistsPage = () => {
         profileImageUrl={artist.basicInformation.profileImageUrl}
       />
       <ArtistInformationContainer>
+        <SocialMediaList artistId={artistId} />
         <h2>{formatMessage({ id: "Artist.Biography" })}</h2>
         <span>{artist.basicInformation.description}</span>
         <h2>{formatMessage({ id: "Artist.Labels" })}</h2>

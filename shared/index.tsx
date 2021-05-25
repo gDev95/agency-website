@@ -1,5 +1,7 @@
 export * from "./ui";
-export { useIsSmallScreen } from "./useIsSmallScreen";
+export { useIsSmallScreen } from "./helpers/useIsSmallScreen";
 export * from "./types";
-export * from "./footerItems";
 export * from "./queries";
+export * from "./pageContent";
+export * from "./icons";
+export * from "./helpers";

@@ -1,9 +1,7 @@
 import { useQuery } from "@apollo/react-hooks";
 import React, { ReactNode, useContext, useMemo } from "react";
 import styled from "styled-components";
-import { Facebook } from "../icons/Facebook";
-import { Instagram } from "../icons/Instagram";
-import { Soundcloud } from "../icons/Soundcloud";
+import { getSocialMediaIcon } from "../icons";
 import { PageContentContext } from "../pageContent";
 import { GET_PAGE_CONTENT } from "../queries";
 import { FooterItem } from "./footerItem";
@@ -24,7 +22,7 @@ const FooterItems = styled.li`
   justify-content: space-evenly;
 `;
 
-type FooterItem = {
+type FooterItemType = {
   icon: ReactNode;
   name: string;
   link: string;
@@ -36,22 +34,22 @@ export const Footer = () => {
     variables: { id: pageId }
   });
 
-  const footerItems: FooterItem[] = useMemo(() => {
+  const footerItems: FooterItemType[] = useMemo(() => {
     return [
       {
         name: "facebook",
         link: pageContentData?.pageContent.socialMedia.facebook,
-        icon: <Facebook />
+        icon: getSocialMediaIcon("facebook")
       },
       {
         name: "instagram",
         link: pageContentData?.pageContent.socialMedia.facebook,
-        icon: <Instagram />
+        icon: getSocialMediaIcon("instagram")
       },
       {
         name: "soundcloud",
         link: pageContentData?.pageContent.socialMedia.facebook,
-        icon: <Soundcloud />
+        icon: getSocialMediaIcon("soundCloud")
       }
     ];
   }, [pageContentData]);

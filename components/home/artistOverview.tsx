@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
-import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import {
+  ALL_ACTIVE_ARTISTS_QUERY,
   ArtistsProfileImage,
   TArtist,
   Title,
@@ -79,19 +79,6 @@ const ArtistContainer = styled.div`
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto;
-`;
-
-export const ALL_ACTIVE_ARTISTS_QUERY = gql`
-  query Artists($isDraft: Boolean!) {
-    artists(isDraft: $isDraft) {
-      id
-      basicInformation {
-        name
-        profileImageUrl
-        isDraft
-      }
-    }
-  }
 `;
 
 export const ArtistOverview = () => {

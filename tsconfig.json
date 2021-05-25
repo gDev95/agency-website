@@ -26,7 +26,7 @@
     "pages/**/*",
     "lib/*",
     "shared/**/*",
-    "helpers/**/*"
+    "shared/helpers/**/*"
   ],
   "exclude": [
     "node_modules"

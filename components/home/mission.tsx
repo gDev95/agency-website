@@ -12,7 +12,7 @@ import { Fade } from "@material-ui/core";
 import { Theme } from "../../shared/theme";
 import { useQuery } from "@apollo/react-hooks";
 import { PageContentContext } from "../../shared/pageContent";
-import { useLanguage } from "../../helpers";
+import { useLanguage } from "../../shared/helpers";
 const MissionStatement = styled.div<{ isMobileScreen: boolean }>`
   flex-grow: 1;
   display: flex;

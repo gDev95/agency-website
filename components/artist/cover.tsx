@@ -9,7 +9,7 @@ const ArtistCoverContainer = styled.div<{ coverImage: string }>`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  height: 100vh;
+  height: 60vh;
   width: 100%;
 
   position: relative;

@@ -2,7 +2,7 @@ export type TArtist = {
   id: string;
   basicInformation: TBasicInformation;
   advancedInformation: TAdvancedInformation;
-  socialMedia: TSocialMedia;
+  socialMediaLinks: TSocialMediaLinks;
 };
 
 export type TBasicInformation = {
@@ -30,7 +30,7 @@ export type TSetup = {
   equipmentImageUrl: string;
 };
 
-export type TSocialMedia = {
+export type TSocialMediaLinks = {
   facebook?: string;
   instagram?: string;
   beatport?: string;
