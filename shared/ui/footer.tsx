@@ -14,6 +14,7 @@ const StyledRoot = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 54px;
 `;
 
 const FooterItems = styled.li`
