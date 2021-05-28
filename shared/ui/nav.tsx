@@ -128,7 +128,6 @@ export const Nav = ({ color, ...otherProps }: PropsType) => {
 
   const router = useRouter();
 
-  console.log("router", router);
   const disableScroll = (disable: boolean) =>
     disable
       ? (document.body.style.overflow = "hidden")
