@@ -70,6 +70,18 @@ const StyledPhoneNumber = styled.a`
   }
 `;
 
+const SetupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const StyledSetupList = styled.ul`
+  display: flex;
+`;
+
+const StyledSetupImage = styled.img``;
+
 const ArtistsPage = () => {
   const router = useRouter();
   const artistId = router.query.id;
@@ -112,11 +124,16 @@ const ArtistsPage = () => {
           })}
         </LabelsWrapper>
         <h2>{formatMessage({ id: "Artist.Setup" })}</h2>
-        <ul>
-          {artist.advancedInformation.setup.equipment.map((item: string) => (
-            <li>{item}</li>
-          ))}
-        </ul>
+        <SetupContainer>
+          <StyledSetupList>
+            {artist.advancedInformation.setup.equipment.map((item: string) => (
+              <li>{item}</li>
+            ))}
+          </StyledSetupList>
+          <StyledSetupImage
+            src={artist.advancedInformation.setup.equipmentImageUrl}
+          />
+        </SetupContainer>
         <h2>{formatMessage({ id: "Artist.Hospitality" })}</h2>
         <ul>
           {artist.advancedInformation.hospitality.map((item: string) => (
@@ -127,16 +144,16 @@ const ArtistsPage = () => {
           <span>{formatMessage({ id: "Artist.ContactDetails" })}</span>
           <ContactDetail>
             <StyledEmailLink
-              href={`mailto:${pageContentData.pageContent.contactDetails.email}`}
+              href={`mailto:${pageContentData?.pageContent?.contactDetails.email}`}
             >
-              {pageContentData.pageContent.contactDetails.email}
+              {pageContentData?.pageContent?.contactDetails.email}
             </StyledEmailLink>
           </ContactDetail>
           <ContactDetail>
             <StyledPhoneNumber
-              href={`tel::${pageContentData.pageContent.contactDetails.phone}`}
+              href={`tel:${pageContentData?.pageContent?.contactDetails.phone}`}
             >
-              {pageContentData.pageContent.contactDetails.phone}
+              {pageContentData?.pageContent?.contactDetails.phone}
             </StyledPhoneNumber>
           </ContactDetail>
         </ContactDetailsWrapper>
