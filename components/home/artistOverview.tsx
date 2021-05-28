@@ -83,6 +83,10 @@ const ArtistContainer = styled.div`
   margin: 0 auto;
 `;
 
+const ArtistName = styled.span`
+  margin-top: 8px;
+`;
+
 export const ArtistOverview = () => {
   const { data } = useQuery(ALL_ACTIVE_ARTISTS_QUERY, {
     variables: { isDraft: false }
@@ -125,6 +129,11 @@ export const ArtistOverview = () => {
                         onMouseEnter={() => setHoveredArtistId(artist.id)}
                         onMouseLeave={() => setHoveredArtistId(null)}
                       >
+                        {isMobileScreen && (
+                          <ArtistName>
+                            {artist.basicInformation.name}
+                          </ArtistName>
+                        )}
                         <Fade in={hoveredArtistId === artist.id} timeout={500}>
                           <AristNameOverlay>
                             {artist.basicInformation.name}
