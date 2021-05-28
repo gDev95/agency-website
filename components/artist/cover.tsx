@@ -4,13 +4,12 @@ import { ArtistsProfileImage, useIsSmallScreen } from "../../shared";
 import { Theme } from "../../shared/theme";
 
 const ArtistCoverContainer = styled.div<{ coverImage: string }>`
-  background: url(${({ coverImage }) => coverImage});
+  background: url(${({ coverImage }) => coverImage}) rgba(0, 0, 0, 0.3);
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  height: 60vh;
-  width: 100%;
+  background-blend-mode: multiply;
+  height: 40vh;
+  max-width: 100%;
 
   position: relative;
   display: flex;
@@ -44,8 +43,9 @@ export const Cover = ({
     <ArtistCoverContainer coverImage={coverImageUrl}>
       <StyledProfileImage
         src={profileImageUrl}
-        size={isMobileScreen ? 200 : 300}
+        size={isMobileScreen ? 140 : 240}
       />
+
       <ArtistHeadline>
         <h1>{artistName}</h1>
       </ArtistHeadline>
