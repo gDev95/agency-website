@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
 
@@ -106,6 +106,14 @@ const ReadMoreButton = styled.span`
 const ArtistsPage = () => {
   const router = useRouter();
   const artistId = router.query.id;
+
+  useEffect(() => {
+    if (!artistId || typeof artistId !== "string") {
+      // go to artist overview page
+      router.push("/");
+    }
+  }, [artistId, router]);
+
   const { formatMessage } = useIntl();
   const { data: artistData } = useQuery(GET_ARTIST_QUERY, {
     variables: { id: artistId }
@@ -123,10 +131,6 @@ const ArtistsPage = () => {
     () => artist?.basicInformation.description.length > 700,
     [artist]
   );
-  if (!artistId || typeof artistId !== "string") {
-    // go to artist overview page
-    return router.replace("/");
-  }
 
   return artist ? (
     <StyledRoot>
@@ -136,7 +140,7 @@ const ArtistsPage = () => {
         profileImageUrl={artist.basicInformation.profileImageUrl}
       />
       <ArtistInformationContainer>
-        <SocialMediaList artistId={artistId} />
+        <SocialMediaList artistId={artistId as string} />
         <h2>{formatMessage({ id: "Artist.Biography" })}</h2>
         <StyledDescription
           expanded={expandDescription}
