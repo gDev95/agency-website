@@ -72,6 +72,8 @@ const AristNameOverlay = styled.div`
   background: rgb(0, 0, 0, 0.6);
   border-radius: ${ARTIST_PROFILE_IMAGE_SIZE / 2}px;
   color: ${Theme.white};
+
+  font-size: 24px;
 `;
 const ArtistContainer = styled.div`
   display: flex;
