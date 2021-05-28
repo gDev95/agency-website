@@ -46,6 +46,8 @@ const ContactDetailsWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   margin-top: 54px;
+
+  font-size: 20px;
 `;
 
 const ContactDetail = styled.span`
