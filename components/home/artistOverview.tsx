@@ -72,6 +72,8 @@ const AristNameOverlay = styled.div`
   background: rgb(0, 0, 0, 0.6);
   border-radius: ${ARTIST_PROFILE_IMAGE_SIZE / 2}px;
   color: ${Theme.white};
+
+  font-size: 24px;
 `;
 const ArtistContainer = styled.div`
   display: flex;
@@ -79,6 +81,10 @@ const ArtistContainer = styled.div`
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto;
+`;
+
+const ArtistName = styled.span`
+  margin-top: 8px;
 `;
 
 export const ArtistOverview = () => {
@@ -123,6 +129,11 @@ export const ArtistOverview = () => {
                         onMouseEnter={() => setHoveredArtistId(artist.id)}
                         onMouseLeave={() => setHoveredArtistId(null)}
                       >
+                        {isMobileScreen && (
+                          <ArtistName>
+                            {artist.basicInformation.name}
+                          </ArtistName>
+                        )}
                         <Fade in={hoveredArtistId === artist.id} timeout={500}>
                           <AristNameOverlay>
                             {artist.basicInformation.name}

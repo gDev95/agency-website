@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import styled, { css } from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
 
 import { Cover } from "../../components/artist/cover";
@@ -46,6 +46,8 @@ const ContactDetailsWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   margin-top: 54px;
+
+  font-size: 20px;
 `;
 
 const ContactDetail = styled.span`
@@ -70,26 +72,66 @@ const StyledPhoneNumber = styled.a`
   }
 `;
 
+const SetupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const StyledSetupList = styled.ul`
+  display: flex;
+`;
+
+const StyledDescription = styled.div<{
+  expanded: boolean;
+  isLongDescription: boolean;
+}>`
+  ${({ expanded, isLongDescription }) =>
+    !isLongDescription || expanded
+      ? css`
+          height: 100%;
+        `
+      : css`
+          height: 220px;
+          overflow: hidden;
+        `}
+`;
+
+const ReadMoreButton = styled.span`
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 const ArtistsPage = () => {
   const router = useRouter();
   const artistId = router.query.id;
+
+  useEffect(() => {
+    if (!artistId || typeof artistId !== "string") {
+      // go to artist overview page
+      router.push("/");
+    }
+  }, [artistId, router]);
+
   const { formatMessage } = useIntl();
   const { data: artistData } = useQuery(GET_ARTIST_QUERY, {
     variables: { id: artistId }
   });
 
+  const [expandDescription, setExpandDescription] = useState<boolean>(false);
+
   const pageId = useContext(PageContentContext);
   const { data: pageContentData } = useQuery(GET_PAGE_CONTENT, {
     variables: { id: pageId }
   });
-  if (!artistId || typeof artistId !== "string") {
-    // go to artist overview page
-    return <p>400 not found</p>;
-  }
 
   const artist = artistData ? artistData.artist : null;
+  const isLongDescription = useMemo(
+    () => artist?.basicInformation.description.length > 700,
+    [artist]
+  );
 
-  // show specific artist page
   return artist ? (
     <StyledRoot>
       <Cover
@@ -98,9 +140,20 @@ const ArtistsPage = () => {
         profileImageUrl={artist.basicInformation.profileImageUrl}
       />
       <ArtistInformationContainer>
-        <SocialMediaList artistId={artistId} />
+        <SocialMediaList artistId={artistId as string} />
         <h2>{formatMessage({ id: "Artist.Biography" })}</h2>
-        <span>{artist.basicInformation.description}</span>
+        <StyledDescription
+          expanded={expandDescription}
+          isLongDescription={isLongDescription}
+        >
+          {artist.basicInformation.description}
+        </StyledDescription>
+
+        {isLongDescription && !expandDescription && (
+          <ReadMoreButton onClick={() => setExpandDescription(true)}>
+            {formatMessage({ id: "Artist.Description.ReadMore" })}
+          </ReadMoreButton>
+        )}
         <h2>{formatMessage({ id: "Artist.Labels" })}</h2>
         <LabelsWrapper>
           {artist.advancedInformation.labels.map((label: TLabel) => {
@@ -112,11 +165,14 @@ const ArtistsPage = () => {
           })}
         </LabelsWrapper>
         <h2>{formatMessage({ id: "Artist.Setup" })}</h2>
-        <ul>
-          {artist.advancedInformation.setup.equipment.map((item: string) => (
-            <li>{item}</li>
-          ))}
-        </ul>
+        <SetupContainer>
+          <StyledSetupList>
+            {artist.advancedInformation.setup.equipment.map((item: string) => (
+              <li>{item}</li>
+            ))}
+          </StyledSetupList>
+          <img src={artist.advancedInformation.setup.equipmentImageUrl} />
+        </SetupContainer>
         <h2>{formatMessage({ id: "Artist.Hospitality" })}</h2>
         <ul>
           {artist.advancedInformation.hospitality.map((item: string) => (
@@ -127,16 +183,16 @@ const ArtistsPage = () => {
           <span>{formatMessage({ id: "Artist.ContactDetails" })}</span>
           <ContactDetail>
             <StyledEmailLink
-              href={`mailto:${pageContentData.pageContent.contactDetails.email}`}
+              href={`mailto:${pageContentData?.pageContent?.contactDetails.email}`}
             >
-              {pageContentData.pageContent.contactDetails.email}
+              {pageContentData?.pageContent?.contactDetails.email}
             </StyledEmailLink>
           </ContactDetail>
           <ContactDetail>
             <StyledPhoneNumber
-              href={`tel::${pageContentData.pageContent.contactDetails.phone}`}
+              href={`tel:${pageContentData?.pageContent?.contactDetails.phone}`}
             >
-              {pageContentData.pageContent.contactDetails.phone}
+              {pageContentData?.pageContent?.contactDetails.phone}
             </StyledPhoneNumber>
           </ContactDetail>
         </ContactDetailsWrapper>

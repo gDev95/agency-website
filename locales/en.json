@@ -9,7 +9,8 @@
 	"Home.ArtistOverview.Subheader": "See our best Artists",
 	"Artist.Biography": "Biography",
 	"Artist.Labels": "Labels",
-	"Artist.Setup": "Setup",
+	"Artist.Setup": "Rider",
 	"Artist.Hospitality": "Hospitality",
-	"Artist.ContactDetails": "For booking request contact:"
+	"Artist.ContactDetails": "For booking request contact:",
+	"Artist.Description.ReadMore": "Read more"
 }
