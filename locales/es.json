@@ -3,23 +3,13 @@
 	"Nav.Artists": "Artistas",
 	"Nav.About": "Sobre nosotros",
 	"Home.CompanyName": "No Borders Booking",
-<<<<<<< HEAD
-	"Home.Mission.Header": "Mission",
-	"Home.Mission.FounderImage.Description": "Enric - Founder of Nobo Bookings",
-	"Home.ArtistOverview.Header": "Artists",
-	"Home.ArtistOverview.Subheader": "See our best Artists",
-	"Artist.Biography": "Biography",
-=======
 	"Home.Mission.Header": "Misión",
 	"Home.Mission.FounderImage.Description": "Enric - Fundador de Nobo Bookings",
-	"Home.MoreInfo": "Más Informaciones",
 	"Home.ArtistOverview.Header": "Artistas",
 	"Home.ArtistOverview.Subheader": "Ver nuestros mejores artistas",
 	"Artist.Biography": "Biografía",
->>>>>>> d207c46 (update locales based on latest changes)
 	"Artist.Labels": "Labels",
 	"Artist.Setup": "Setup",
 	"Artist.Hospitality": "Hospitality",
-	"Artist.ContactDetails": "Contacto para solicitacitud de reservas:  ",
-	"Artist.Description.ReadMore": "Read more"
+	"Artist.ContactDetails": "Contacto para solicitacitud de reservas:  "
 }
