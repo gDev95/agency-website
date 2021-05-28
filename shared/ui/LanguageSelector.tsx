@@ -5,6 +5,7 @@ import { SupportedLanguages } from "../helpers/useLanguage";
 import { NavLink } from "./NavLink";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import { Theme } from "../theme";
+import { useRouter } from "next/router";
 
 const StyledRoot = styled.div`
   display: flex;
@@ -39,6 +40,7 @@ const StyledDropdownAnchor = styled.a`
 export const LanguageSelector = ({ ...otherProps }: any) => {
   const { language: currentLanguage, locale: currentLocale } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <StyledRoot {...otherProps}>
@@ -50,7 +52,10 @@ export const LanguageSelector = ({ ...otherProps }: any) => {
         {SupportedLanguages.filter(
           language => language.locale !== currentLocale
         ).map(language => (
-          <StyledNavLink key={language.name} href={language.link}>
+          <StyledNavLink
+            key={language.name}
+            href={`${language.link}${router.asPath}`}
+          >
             {language.name}
           </StyledNavLink>
         ))}

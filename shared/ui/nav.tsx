@@ -11,6 +11,7 @@ import { NoboBookingsLogo } from "./NoboBookingsLogo";
 import { Theme } from "../theme";
 import { NavLink } from "./NavLink";
 import { LanguageSelector } from "./LanguageSelector";
+import { useRouter } from "next/router";
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -108,8 +109,8 @@ type MenuItemsType = {
 
 const menuItems: MenuItemsType[] = [
   { name: "Nav.Home", link: "/" },
-  { name: "Nav.Artists", link: "/#artists" },
-  { name: "Nav.About", link: "/#mission" }
+  { name: "Nav.About", link: "#mission" },
+  { name: "Nav.Artists", link: "#artists" }
 ];
 
 type PropsType = {
@@ -124,6 +125,14 @@ export const Nav = ({ color, ...otherProps }: PropsType) => {
     /* Optional options */
     threshold: 0.4
   });
+
+  const router = useRouter();
+
+  console.log("router", router);
+  const disableScroll = (disable: boolean) =>
+    disable
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "scroll");
 
   return (
     <StyledRoot ref={ref} isMobileScreen={isMobileScreen} {...otherProps}>
@@ -141,20 +150,23 @@ export const Nav = ({ color, ...otherProps }: PropsType) => {
               <NavList isMobileScreen={isMobileScreen}>
                 {menuItems.map(item => (
                   <DesktopNavListItem key={item.name}>
-                    <NavLink href={item.link} color={color}>
+                    <NavLink
+                      href={`/${router.locale}${item.link}`}
+                      color={color}
+                    >
                       <FormattedMessage id={item.name} />
                     </NavLink>
                   </DesktopNavListItem>
                 ))}
               </NavList>
             )}
-            <StyledLanguageSelector color={color} />
+            {!isMobileScreen && <StyledLanguageSelector color={color} />}
             {isMobileScreen && (
               <>
                 <StyledIconMenuWrapper
                   onClick={() => {
                     setMenuOpen(!isMenuOpen);
-                    document.body.style.overflow = "hidden";
+                    disableScroll(true);
                   }}
                 >
                   <MenuIcon />
@@ -168,17 +180,24 @@ export const Nav = ({ color, ...otherProps }: PropsType) => {
                 <StyledCloseIcon
                   onClick={() => {
                     setMenuOpen(!isMenuOpen);
-                    document.body.style.overflow = "scroll";
+                    disableScroll(false);
                   }}
                 />
                 <NavList isMobileScreen={isMobileScreen}>
                   {menuItems.map(item => (
-                    <MobileNavListItem key={item.name}>
-                      <NavLink href={item.link}>
+                    <MobileNavListItem
+                      key={item.name}
+                      onClick={() => {
+                        setMenuOpen(!isMenuOpen);
+                        disableScroll(false);
+                      }}
+                    >
+                      <NavLink href={`/${router.locale}${item.link}`}>
                         <FormattedMessage id={item.name} />
                       </NavLink>
                     </MobileNavListItem>
                   ))}
+                  <StyledLanguageSelector color={color} />
                 </NavList>
               </StyledMobileMenu>
             </Fade>
