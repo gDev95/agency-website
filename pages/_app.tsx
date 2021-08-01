@@ -23,6 +23,16 @@ function App({ Component, pageProps }: any) {
       <div>
         <Head>
           <title>Nobo Bookings</title>
+          <link
+            rel="alternate"
+            hrefLang="en"
+            href="https://nobobookings.com/en"
+          />
+          <link
+            rel="alternate"
+            hrefLang="es"
+            href="https://nobobookings.com/es"
+          />
           <link rel="icon" href="/favicon.ico" />
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"

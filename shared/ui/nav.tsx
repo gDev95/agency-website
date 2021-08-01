@@ -111,6 +111,7 @@ const menuItems: MenuItemsType[] = [
   { name: "Nav.Home", link: "/" },
   { name: "Nav.About", link: "#mission" },
   { name: "Nav.Artists", link: "#artists" },
+  { name: "Nav.News", link: "#news" },
 ];
 
 type PropsType = {
