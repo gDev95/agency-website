@@ -1,15 +1,9 @@
 import { useQuery } from "@apollo/react-hooks";
 import React from "react";
-import {
-  Container,
-  GET_NEWS_QUERY,
-  prepareLink,
-  Title,
-  useIsSmallScreen,
-} from "../../shared";
+import { Container, GET_NEWS_QUERY, prepareLink, Title } from "../../shared";
 import ReactPlayer from "react-player";
 import { Fade, Link } from "@material-ui/core";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Theme } from "../../shared/theme";
 import { useInView } from "react-intersection-observer";
 
@@ -71,10 +65,6 @@ export const News = () => {
     /* Optional options */
     threshold: 0.3,
   });
-
-  const handleOnClick = () => {
-    handleOnClick;
-  };
 
   return (
     <StyledRoot id="news" ref={ref}>

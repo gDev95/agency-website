@@ -34,7 +34,7 @@ const NavList = styled.ul<{ isMobileScreen: boolean }>`
 `;
 const DesktopNavListItem = styled.li`
   margin-left: 20px;
-  font-size: 18px;
+  font-size: 24px;
   list-style-type: none;
   border: none;
 
