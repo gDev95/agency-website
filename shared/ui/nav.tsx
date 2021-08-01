@@ -110,7 +110,7 @@ type MenuItemsType = {
 const menuItems: MenuItemsType[] = [
   { name: "Nav.Home", link: "/" },
   { name: "Nav.About", link: "#mission" },
-  { name: "Nav.Artists", link: "#artists" }
+  { name: "Nav.Artists", link: "#artists" },
 ];
 
 type PropsType = {
@@ -123,7 +123,7 @@ export const Nav = ({ color, ...otherProps }: PropsType) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.4
+    threshold: 0.4,
   });
 
   const router = useRouter();

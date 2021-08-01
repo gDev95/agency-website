@@ -4,3 +4,4 @@ export { ArtistsProfileImage } from "./aristsProfileImage";
 export { CoverImageContainer } from "./coverImageContainer";
 export * from "./footer";
 export * from "./nav";
+export * from "./contact";

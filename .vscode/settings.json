@@ -1,23 +1,19 @@
 {
-    "editor.tabSize": 2,
-    "eslint.validate": [
-        "typescriptreact"
-    ],
-    "javascript.validate.enable": true,
-    "eslint.options": {
-        "rules": {
-            "no-debugger": "off"
-        }
-    },
-    "editor.minimap.enabled": false,
-    "editor.rulers": [
-        100
-    ],
-    "editor.wordWrapColumn": 100,
-    "eslint.packageManager": "yarn",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "eslint.codeAction.disableRuleComment": {},
-    "typescript.tsdk": "node_modules/typescript/lib"
+  "editor.tabSize": 2,
+  "eslint.validate": ["typescriptreact"],
+  "javascript.validate.enable": true,
+  "eslint.options": {
+    "rules": {
+      "no-debugger": "off"
+    }
+  },
+  "editor.minimap.enabled": false,
+  "editor.rulers": [100],
+  "editor.wordWrapColumn": 100,
+  "eslint.packageManager": "yarn",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.codeAction.disableRuleComment": {},
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

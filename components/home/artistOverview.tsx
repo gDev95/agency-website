@@ -7,7 +7,7 @@ import {
   ArtistsProfileImage,
   TArtist,
   Title,
-  useIsSmallScreen
+  useIsSmallScreen,
 } from "../../shared";
 import Link from "next/link";
 import { Fade } from "@material-ui/core";
@@ -31,7 +31,6 @@ const StyledHeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-transform: uppercase;
 `;
 
 const StyledHorizontalLine = styled.hr`
@@ -45,7 +44,7 @@ const StyledTitle = styled(Title)`
   margin-bottom: 0 !important;
 `;
 
-const StyledSubheader = styled.h5`
+const StyledSubheader = styled.h3`
   margin-top: 8px;
   margin-bottom: 8px;
   color: #bfbfbf;
@@ -89,12 +88,12 @@ const ArtistName = styled.span`
 
 export const ArtistOverview = () => {
   const { data } = useQuery(ALL_ACTIVE_ARTISTS_QUERY, {
-    variables: { isDraft: false }
+    variables: { isDraft: false },
   });
   const [hoveredArtistId, setHoveredArtistId] = useState<string | null>();
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.1
+    threshold: 0.1,
   });
   const isMobileScreen = useIsSmallScreen();
   return (
@@ -116,13 +115,16 @@ export const ArtistOverview = () => {
                 data.artists &&
                 data.artists.map(
                   (
-                    artist: Omit<TArtist, "advancedInformation" | "socialMedia">
+                    artist: Omit<
+                      TArtist,
+                      "advancedInformation" | "socialMedia"
+                    >,
                   ) => (
                     <Link
                       key={artist.id}
                       href={{
                         pathname: "/artists",
-                        query: { id: artist.id }
+                        query: { id: artist.id },
                       }}
                     >
                       <StyledArtistContent
@@ -145,12 +147,13 @@ export const ArtistOverview = () => {
                         />
                       </StyledArtistContent>
                     </Link>
-                  )
+                  ),
                 )}
             </ArtistContainer>
           </div>
         </Fade>
       </div>
+      <StyledHorizontalLine />
     </StyledSection>
   );
 };

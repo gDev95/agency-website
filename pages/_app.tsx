@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Head from "next/head";
-import { Nav, Footer } from "../shared/ui";
+import { Nav, Footer, Contact } from "../shared/ui";
 import { IntlProvider } from "react-intl";
 import { useLanguage } from "../shared/helpers";
 import { withApollo } from "../lib/apollo";
@@ -41,6 +41,7 @@ function App({ Component, pageProps }: any) {
         <PageContentContext.Provider value={pageId}>
           <Nav />
           <Component {...pageProps} />
+          <Contact />
           <Footer />
         </PageContentContext.Provider>
       </div>

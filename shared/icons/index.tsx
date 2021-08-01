@@ -13,12 +13,12 @@ const socialMediaIcons: SocialMediaIconsType[] = [
   { id: "twitter", icon: <Twitter /> },
   { id: "soundCloud", icon: <Soundcloud /> },
   { id: "residentAdvisor", icon: <ResidentAdvisor /> },
-  { id: "beatport", icon: <Beatport /> }
+  { id: "beatport", icon: <Beatport /> },
 ];
 
 export function getSocialMediaIcon(id: string) {
   const socialMedia = socialMediaIcons.find(
-    socialMediaIcon => socialMediaIcon.id === id
+    socialMediaIcon => socialMediaIcon.id === id,
   );
   if (!socialMedia) {
     throw new Error(`Expected social media ${id} to exist but it didn't`);

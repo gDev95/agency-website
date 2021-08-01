@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-export const GET_PAGE_CONTENT = gql`
+export const GET_PAGE_CONTENT_QUERY = gql`
   query PageContent($id: ID!) {
     pageContent(id: $id) {
       slogan {
@@ -66,6 +66,19 @@ export const GET_ARTIST_QUERY = gql`
         beatport
         residentAdvisor
       }
+    }
+  }
+`;
+
+export const GET_NEWS_QUERY = gql`
+  query News {
+    news {
+      id
+      createdAt
+      title
+      videoLink
+      externalLink
+      imageUrl
     }
   }
 `;

@@ -4,7 +4,7 @@ import {
   getSocialMediaIcon,
   GET_ARTIST_QUERY,
   prepareLink,
-  SocialMediaIconsType
+  SocialMediaIconsType,
 } from "../../shared";
 import styled from "styled-components";
 import { Link } from "@material-ui/core";
@@ -21,7 +21,7 @@ type PropsType = {
 
 export const SocialMediaList = ({ artistId, ...otherProps }: PropsType) => {
   const { data: artistData } = useQuery(GET_ARTIST_QUERY, {
-    variables: { id: artistId }
+    variables: { id: artistId },
   });
 
   const socialMediaItems = useMemo(() => {
@@ -51,7 +51,7 @@ export const SocialMediaList = ({ artistId, ...otherProps }: PropsType) => {
             <Link href={prepareLink(socialMediaItem.link)}>
               {socialMediaItem.icon}
             </Link>
-          )
+          ),
         )}
     </StyledRoot>
   );

@@ -6,20 +6,20 @@ export const SupportedLanguages = [
   {
     name: "English",
     link: "/en",
-    locale: "en"
+    locale: "en",
   },
   {
     name: "Spanish",
     link: "/es",
-    locale: "es"
-  }
+    locale: "es",
+  },
 ];
 
 function getLanguageFromLocale(locale: string = "en"): string {
   const language = SupportedLanguages.find(lang => lang.locale === locale);
   if (!language) {
     throw new Error(
-      `Supported language could not be found based on locale ${locale}`
+      `Supported language could not be found based on locale ${locale}`,
     );
   }
   return language.name;

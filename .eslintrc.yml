@@ -2,69 +2,69 @@
 parser: "@typescript-eslint/parser"
 
 parserOptions:
-    sourceType: module
+  sourceType: module
 
 plugins:
-    - "@typescript-eslint"
-    - prettier
-    - react
-    - react-hooks
+  - "@typescript-eslint"
+  - prettier
+  - react
+  - react-hooks
 
 extends:
-    - "eslint:recommended"
-    - "plugin:@typescript-eslint/eslint-recommended"
+  - "eslint:recommended"
+  - "plugin:@typescript-eslint/eslint-recommended"
 
 ignorePatterns:
-    - "/node_modules/"
-    - "/build/"
-    - "/lib/"
+  - "/node_modules/"
+  - "/build/"
+  - "/lib/"
 
 env:
-    es6: true
-    node: true
-    jest: true
+  es6: true
+  node: true
+  jest: true
 
 globals:
-    window: true
-    document: true
-    process: true
+  window: true
+  document: true
+  process: true
 
 settings:
-    react:
-        version: detect
+  react:
+    version: detect
 
 rules:
-    dot-location: 0
-    dot-notation: 2
-    eqeqeq: 2
-    jsx-quotes: [2, "prefer-double"]
-    no-debugger: 2
-    no-console: 2
-    no-extra-semi: 2
-    no-irregular-whitespace: 2
+  dot-location: 0
+  dot-notation: 2
+  eqeqeq: 2
+  jsx-quotes: [2, "prefer-double"]
+  no-debugger: 2
+  no-console: 2
+  no-extra-semi: 2
+  no-irregular-whitespace: 2
 
-    no-shadow: 2
-    no-undef: 2
-    no-unused-expressions: 0
-    # no-unused-vars: [2, { "ignoreRestSiblings": true }]
-    "@typescript-eslint/no-unused-vars": [2, { "ignoreRestSiblings": true }]
-    no-var: 2
-    radix: 2
+  no-shadow: 2
+  no-undef: 2
+  no-unused-expressions: 0
+  # no-unused-vars: [2, { "ignoreRestSiblings": true }]
+  "@typescript-eslint/no-unused-vars": [2, { "ignoreRestSiblings": true }]
+  no-var: 2
+  radix: 2
 
-    # eslint-plugin-react
-    react/react-in-jsx-scope: 2
-    react/jsx-boolean-value: [2, always]
-    react/jsx-no-bind: [2, { allowArrowFunctions: true }]
-    react/jsx-no-undef: 2
-    react/jsx-uses-react: 2
-    react/jsx-uses-vars: 2
-    react/no-multi-comp: [2, { "ignoreStateless": true }]
-    react/no-unknown-property: 2
-    react/sort-comp: 0
+  # eslint-plugin-react
+  react/react-in-jsx-scope: 2
+  react/jsx-boolean-value: [2, always]
+  react/jsx-no-bind: [2, { allowArrowFunctions: true }]
+  react/jsx-no-undef: 2
+  react/jsx-uses-react: 2
+  react/jsx-uses-vars: 2
+  react/no-multi-comp: [2, { "ignoreStateless": true }]
+  react/no-unknown-property: 2
+  react/sort-comp: 0
 
-    # eslint-plugin-react-hooks
-    react-hooks/rules-of-hooks: "error"
-    react-hooks/exhaustive-deps: "error"
+  # eslint-plugin-react-hooks
+  react-hooks/rules-of-hooks: "error"
+  react-hooks/exhaustive-deps: "error"
 
-    # eslint-plugin-prettier
-    prettier/prettier: "error"
+  # eslint-plugin-prettier
+  prettier/prettier: "error"

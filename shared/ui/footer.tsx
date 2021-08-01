@@ -3,7 +3,7 @@ import React, { ReactNode, useContext, useMemo } from "react";
 import styled from "styled-components";
 import { getSocialMediaIcon } from "../icons";
 import { PageContentContext } from "../pageContent";
-import { GET_PAGE_CONTENT } from "../queries";
+import { GET_PAGE_CONTENT_QUERY } from "../queries";
 import { FooterItem } from "./footerItem";
 
 const FOOTER_HEIGHT = 48;
@@ -31,8 +31,8 @@ type FooterItemType = {
 
 export const Footer = () => {
   const pageId = useContext(PageContentContext);
-  const { data: pageContentData } = useQuery(GET_PAGE_CONTENT, {
-    variables: { id: pageId }
+  const { data: pageContentData } = useQuery(GET_PAGE_CONTENT_QUERY, {
+    variables: { id: pageId },
   });
 
   const footerItems: FooterItemType[] = useMemo(() => {
@@ -40,18 +40,18 @@ export const Footer = () => {
       {
         name: "facebook",
         link: pageContentData?.pageContent.socialMedia.facebook,
-        icon: getSocialMediaIcon("facebook")
+        icon: getSocialMediaIcon("facebook"),
       },
       {
         name: "instagram",
         link: pageContentData?.pageContent.socialMedia.instagram,
-        icon: getSocialMediaIcon("instagram")
+        icon: getSocialMediaIcon("instagram"),
       },
       {
         name: "soundCloud",
         link: pageContentData?.pageContent.socialMedia.soundCloud,
-        icon: getSocialMediaIcon("soundCloud")
-      }
+        icon: getSocialMediaIcon("soundCloud"),
+      },
     ];
   }, [pageContentData]);
 

@@ -36,7 +36,7 @@ type PropsType = {
 export const Cover = ({
   coverImageUrl,
   artistName,
-  profileImageUrl
+  profileImageUrl,
 }: PropsType) => {
   const isMobileScreen = useIsSmallScreen();
   return (

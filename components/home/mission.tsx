@@ -3,9 +3,9 @@ import styled, { css } from "styled-components";
 import { FormattedMessage } from "react-intl";
 import {
   Container,
-  GET_PAGE_CONTENT,
+  GET_PAGE_CONTENT_QUERY,
   Title,
-  useIsSmallScreen
+  useIsSmallScreen,
 } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { Fade } from "@material-ui/core";
@@ -50,7 +50,7 @@ const StyledImage = styled.img<{ isMobileScreen?: boolean }>`
   width: ${({ isMobileScreen }) => (isMobileScreen ? `220px` : `340px`)};
 `;
 
-const StyledContainer = styled(Container)<{ isMobileScreen: boolean }>`
+const StyledRoot = styled(Container)<{ isMobileScreen: boolean }>`
   min-height: ${({ isMobileScreen }) => (isMobileScreen ? `100%` : `100vh`)};
   display: flex;
   align-items: center;
@@ -73,18 +73,18 @@ const StyledTitle = styled(Title)`
 export const Mission = () => {
   const { ref, inView } = useInView({
     /* Optional options */
-    threshold: 0.3
+    threshold: 0.3,
   });
   const pageId = useContext(PageContentContext);
-  const { data: pageContentData } = useQuery(GET_PAGE_CONTENT, {
-    variables: { id: pageId }
+  const { data: pageContentData } = useQuery(GET_PAGE_CONTENT_QUERY, {
+    variables: { id: pageId },
   });
 
   const { locale } = useLanguage();
 
   const isMobileScreen = useIsSmallScreen();
   return (
-    <StyledContainer id="mission" ref={ref} isMobileScreen={isMobileScreen}>
+    <StyledRoot id="mission" ref={ref} isMobileScreen={isMobileScreen}>
       <Fade in={inView} timeout={1000}>
         <StyledWrapper>
           <MissionStatement isMobileScreen={isMobileScreen}>
@@ -112,6 +112,6 @@ export const Mission = () => {
           )}
         </StyledWrapper>
       </Fade>
-    </StyledContainer>
+    </StyledRoot>
   );
 };
