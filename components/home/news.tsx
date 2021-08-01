@@ -1,6 +1,12 @@
 import { useQuery } from "@apollo/react-hooks";
 import React from "react";
-import { Container, GET_NEWS_QUERY, prepareLink, Title } from "../../shared";
+import {
+  Container,
+  GET_NEWS_QUERY,
+  prepareLink,
+  Title,
+  TNews,
+} from "../../shared";
 import ReactPlayer from "react-player";
 import { Fade, Link } from "@material-ui/core";
 import styled from "styled-components";
@@ -73,16 +79,7 @@ export const News = () => {
         <NewsWrapper>
           {data
             ? data.news.map(
-                ({
-                  imageUrl,
-                  externalLink,
-                  videoLink,
-                  title,
-                }: {
-                  imageUrl: string;
-                  externalLink: string;
-                  videoLink: string;
-                }) => {
+                ({ imageUrl, externalLink, videoLink, title }: TNews) => {
                   const media = imageUrl ? (
                     <NewsImage src={imageUrl} alt={title} />
                   ) : videoLink ? (
