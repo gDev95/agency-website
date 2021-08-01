@@ -8,7 +8,7 @@ const ArtistCoverContainer = styled.div<{ coverImage: string }>`
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
-  height: 40vh;
+  height: 60vh;
   max-width: 100%;
 
   position: relative;
